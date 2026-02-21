@@ -6,7 +6,6 @@ import { ProductService } from '../../core/services/product';
 import { CartService } from '../../core/services/cart';
 import { SeoService } from '../../core/services/seo';
 import { Product } from '../../core/models/product';
-import { ProductCardComponent } from '../../shared/components/product-card';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { switchMap, tap, map } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
@@ -14,13 +13,13 @@ import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatIconModule, ProductCardComponent],
+  imports: [CommonModule, RouterLink, MatIconModule],
   template: `
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       @if (isLoading()) {
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 animate-pulse">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 animate-pulse">
           <div class="aspect-[3/4] bg-brand-sand/50 product-frame"></div>
-          <div class="space-y-8">
+          <div class="space-y-6">
             <div class="h-10 bg-brand-sand/50 w-3/4"></div>
             <div class="h-6 bg-brand-sand/50 w-1/4"></div>
             <div class="h-24 bg-brand-sand/50 w-full"></div>
@@ -28,7 +27,7 @@ import { DOCUMENT } from '@angular/common';
           </div>
         </div>
       } @else if (product(); as p) {
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           <!-- Left: Image Gallery -->
           <div class="space-y-6">
             <div class="aspect-[3/4] overflow-hidden product-frame relative group">
@@ -126,32 +125,40 @@ import { DOCUMENT } from '@angular/common';
         </div>
 
         <!-- Heritage Details -->
-        <section class="py-32 border-t border-brand-charcoal/5">
-          <div class="text-center mb-20">
-            <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Distinguishing Features</p>
-            <h2 class="text-4xl md:text-5xl font-serif italic">Heritage Details</h2>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-            <div class="text-center space-y-6">
-              <mat-icon class="text-brand-gold">air</mat-icon>
-              <h4 class="text-lg font-serif">Ethereal Lightness</h4>
-              <p class="text-xs text-brand-charcoal/60 leading-relaxed">Remarkably weightless yet exceptionally warm, a testament to the fine micron count of pure hand-spun pashm.</p>
+        <section class="py-16 bg-brand-sand/30 bg-subtle-pattern border-y border-brand-gold/10">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+              <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-3">Distinguishing Features</p>
+              <h2 class="text-4xl md:text-5xl font-serif italic">Heritage Details</h2>
             </div>
-            <div class="text-center space-y-6">
-              <mat-icon class="text-brand-gold">auto_fix_high</mat-icon>
-              <h4 class="text-lg font-serif">Hand-Embroidered Borders</h4>
-              <p class="text-xs text-brand-charcoal/60 leading-relaxed">Intricate needlework using traditional Sozni techniques, reflecting centuries of nomadic artistry and storytelling.</p>
-            </div>
-            <div class="text-center space-y-6">
-              <mat-icon class="text-brand-gold">flare</mat-icon>
-              <h4 class="text-lg font-serif">Rare Cashmere Fibers</h4>
-              <p class="text-xs text-brand-charcoal/60 leading-relaxed">Sourced exclusively from the softest underfleece of the Changthangi goat, harvested only once a year.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+              <div class="text-center space-y-4">
+                <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                  <mat-icon class="text-brand-pearl text-xl">air</mat-icon>
+                </div>
+                <h4 class="text-lg font-serif">Ethereal Lightness</h4>
+                <p class="text-xs text-brand-charcoal/60 leading-relaxed">Remarkably weightless yet exceptionally warm, a testament to the fine micron count of pure hand-spun pashm.</p>
+              </div>
+              <div class="text-center space-y-4">
+                <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                  <mat-icon class="text-brand-pearl text-xl">auto_fix_high</mat-icon>
+                </div>
+                <h4 class="text-lg font-serif">Hand-Embroidered Borders</h4>
+                <p class="text-xs text-brand-charcoal/60 leading-relaxed">Intricate needlework using traditional Sozni techniques, reflecting centuries of nomadic artistry and storytelling.</p>
+              </div>
+              <div class="text-center space-y-4">
+                <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                  <mat-icon class="text-brand-pearl text-xl">flare</mat-icon>
+                </div>
+                <h4 class="text-lg font-serif">Rare Cashmere Fibers</h4>
+                <p class="text-xs text-brand-charcoal/60 leading-relaxed">Sourced exclusively from the softest underfleece of the Changthangi goat, harvested only once a year.</p>
+              </div>
             </div>
           </div>
         </section>
 
         <!-- Care Ritual -->
-        <section class="py-32 bg-brand-sand/20">
+        <section class="py-20 bg-brand-sand/10">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div class="aspect-[3/4] product-frame overflow-hidden">
               <img src="https://picsum.photos/seed/craft/800/1000" alt="Preservation Artistry" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
@@ -186,19 +193,6 @@ import { DOCUMENT } from '@angular/common';
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        <!-- Related Products -->
-        <section class="py-32">
-          <div class="text-center mb-20">
-            <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">You May Also Like</p>
-            <h2 class="text-4xl md:text-5xl font-serif italic">Related Pieces</h2>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            @for (rp of relatedProducts(); track rp.id) {
-              <app-product-card [product]="rp" />
-            }
           </div>
         </section>
       } @else {
@@ -237,14 +231,6 @@ export class ProductDetailComponent {
         }
         this.isLoading.set(false);
       })
-    )
-  );
-
-  relatedProducts = toSignal(
-    this.route.params.pipe(
-      map(params => params['slug']),
-      switchMap(slug => this.productService.getProductBySlug(slug)),
-      switchMap(p => p ? this.productService.getRelatedProducts(p.id) : [])
     )
   );
 

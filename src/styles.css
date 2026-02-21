@@ -52,3 +52,8 @@
 .group:hover .product-frame {
   @apply border-brand-charcoal/10;
 }
+
+.bg-subtle-pattern {
+  background-image: radial-gradient(rgba(198, 168, 94, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

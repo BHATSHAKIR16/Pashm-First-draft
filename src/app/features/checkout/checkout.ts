@@ -1,0 +1,270 @@
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { CartService } from '../../core/services/cart';
+import { OrderService } from '../../core/services/order';
+import { SeoService } from '../../core/services/seo';
+import { Order } from '../../core/models/order';
+
+@Component({
+  selector: 'app-checkout',
+  standalone: true,
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, MatIconModule],
+  template: `
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      @if (isSuccess()) {
+        <div class="max-w-2xl mx-auto text-center py-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div class="w-20 h-20 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+            <mat-icon class="text-brand-pearl text-4xl">check</mat-icon>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-serif mb-6 italic">Order Confirmed</h1>
+          <p class="text-brand-charcoal/60 mb-12 leading-relaxed">
+            Thank you for choosing Al-Masrah. Your order has been received and is being prepared with the utmost care. 
+            A confirmation email has been sent to your inbox.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button routerLink="/collection" class="btn-primary">Continue Shopping</button>
+            <button routerLink="/" class="btn-outline">Return Home</button>
+          </div>
+        </div>
+      } @else {
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+          <!-- Left: Checkout Form -->
+          <div class="space-y-12">
+            <div>
+              <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Secure Checkout</p>
+              <h1 class="text-4xl md:text-5xl font-serif italic mb-8">Shipping Information</h1>
+            </div>
+
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="space-y-8">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                  <label for="name" class="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/60">Full Name</label>
+                  <input 
+                    id="name"
+                    type="text" 
+                    formControlName="name"
+                    class="w-full bg-transparent border-b border-brand-charcoal/20 py-3 focus:border-brand-gold outline-none transition-colors text-sm"
+                    placeholder="Enter your full name"
+                  />
+                  @if (f['name'].touched && f['name'].errors) {
+                    <p class="text-[10px] text-red-500 uppercase tracking-widest">Name is required</p>
+                  }
+                </div>
+                <div class="space-y-2">
+                  <label for="email" class="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/60">Email Address</label>
+                  <input 
+                    id="email"
+                    type="email" 
+                    formControlName="email"
+                    class="w-full bg-transparent border-b border-brand-charcoal/20 py-3 focus:border-brand-gold outline-none transition-colors text-sm"
+                    placeholder="email@example.com"
+                  />
+                  @if (f['email'].touched && f['email'].errors) {
+                    <p class="text-[10px] text-red-500 uppercase tracking-widest">Valid email is required</p>
+                  }
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                  <label for="phone" class="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/60">Phone Number</label>
+                  <input 
+                    id="phone"
+                    type="tel" 
+                    formControlName="phone"
+                    class="w-full bg-transparent border-b border-brand-charcoal/20 py-3 focus:border-brand-gold outline-none transition-colors text-sm"
+                    placeholder="+971 00 000 0000"
+                  />
+                  @if (f['phone'].touched && f['phone'].errors) {
+                    <p class="text-[10px] text-red-500 uppercase tracking-widest">Phone number is required</p>
+                  }
+                </div>
+                <div class="space-y-2">
+                  <label for="country" class="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/60">Country</label>
+                  <select 
+                    id="country"
+                    formControlName="country"
+                    class="w-full bg-transparent border-b border-brand-charcoal/20 py-3 focus:border-brand-gold outline-none transition-colors text-sm appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Select your country</option>
+                    @for (country of countries; track country) {
+                      <option [value]="country">{{ country }}</option>
+                    }
+                  </select>
+                  @if (f['country'].touched && f['country'].errors) {
+                    <p class="text-[10px] text-red-500 uppercase tracking-widest">Please select a country</p>
+                  }
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label for="address" class="text-[10px] uppercase tracking-widest font-bold text-brand-charcoal/60">Delivery Address</label>
+                <textarea 
+                  id="address"
+                  formControlName="address"
+                  rows="3"
+                  class="w-full bg-transparent border-b border-brand-charcoal/20 py-3 focus:border-brand-gold outline-none transition-colors text-sm resize-none"
+                  placeholder="Street name, building, apartment number..."
+                ></textarea>
+                @if (f['address'].touched && f['address'].errors) {
+                  <p class="text-[10px] text-red-500 uppercase tracking-widest">Address is required</p>
+                }
+              </div>
+
+              @if (error()) {
+                <div class="bg-red-50 text-red-600 p-4 text-xs uppercase tracking-widest flex items-center gap-3">
+                  <mat-icon class="text-sm">error_outline</mat-icon>
+                  {{ error() }}
+                </div>
+              }
+
+              <div class="pt-8">
+                <button 
+                  type="submit" 
+                  [disabled]="checkoutForm.invalid || isLoading()"
+                  class="w-full btn-gold py-4 flex items-center justify-center gap-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  @if (isLoading()) {
+                    <span class="w-5 h-5 border-2 border-brand-pearl/30 border-t-brand-pearl rounded-full animate-spin"></span>
+                    Processing...
+                  } @else {
+                    Confirm Order <mat-icon class="text-sm">arrow_forward</mat-icon>
+                  }
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right: Order Summary -->
+          <div class="lg:col-span-1">
+            <div class="bg-brand-sand/30 p-8 border border-brand-gold/10">
+              <h3 class="text-xl font-serif mb-8">Your Selection</h3>
+              
+              <div class="space-y-6 mb-8 max-h-[400px] overflow-y-auto pr-4 custom-scrollbar">
+                @for (item of cart.items(); track item.id) {
+                  <div class="flex gap-4 pb-4 border-b border-brand-charcoal/5">
+                    <div class="w-16 h-20 flex-shrink-0 product-frame overflow-hidden">
+                      <img [src]="item.images[0]" [alt]="item.name" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                      <h4 class="text-xs font-serif mb-1">{{ item.name }}</h4>
+                      <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40">Qty: {{ item.quantity }}</p>
+                      <p class="text-[10px] font-medium text-brand-gold mt-1">{{ (item.price * item.quantity) | number }} AED</p>
+                    </div>
+                  </div>
+                }
+              </div>
+
+              <div class="space-y-4 mb-8">
+                <div class="flex justify-between text-[10px] uppercase tracking-widest text-brand-charcoal/60">
+                  <span>Subtotal</span>
+                  <span>{{ cart.totalPrice() | number }} AED</span>
+                </div>
+                <div class="flex justify-between text-[10px] uppercase tracking-widest text-brand-charcoal/60">
+                  <span>Shipping</span>
+                  <span class="text-brand-gold">Complimentary</span>
+                </div>
+                <div class="pt-4 border-t border-brand-charcoal/10 flex justify-between text-xs uppercase tracking-[0.2em] font-bold">
+                  <span>Total</span>
+                  <span>{{ cart.totalPrice() | number }} AED</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 p-4 bg-white/50 border border-brand-gold/10">
+                <mat-icon class="text-brand-gold text-sm">verified_user</mat-icon>
+                <span class="text-[8px] uppercase tracking-widest text-brand-charcoal/60">Secure payment & authentic heritage guaranteed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  `,
+  styles: [`
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 2px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.05);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c6a85e;
+    }
+  `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CheckoutComponent {
+  private fb = inject(FormBuilder);
+  public cart = inject(CartService);
+  private orderService = inject(OrderService);
+  private seo = inject(SeoService);
+  private router = inject(Router);
+
+  checkoutForm: FormGroup;
+  isLoading = signal(false);
+  isSuccess = signal(false);
+  error = signal<string | null>(null);
+
+  countries = [
+    'United Arab Emirates',
+    'Saudi Arabia',
+    'Qatar',
+    'Kuwait',
+    'Bahrain',
+    'Oman',
+    'Jordan',
+    'Lebanon',
+    'Egypt'
+  ];
+
+  constructor() {
+    this.seo.updateTitle('Checkout');
+    
+    // Redirect if cart is empty
+    if (this.cart.items().length === 0) {
+      this.router.navigate(['/cart']);
+    }
+
+    this.checkoutForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      address: ['', [Validators.required]]
+    });
+  }
+
+  get f() { return this.checkoutForm.controls; }
+
+  onSubmit() {
+    if (this.checkoutForm.invalid || this.isLoading()) return;
+
+    this.isLoading.set(true);
+    this.error.set(null);
+
+    const order: Order = {
+      customer: this.checkoutForm.value,
+      items: this.cart.items(),
+      totalAmount: this.cart.totalPrice(),
+      currency: 'AED',
+      status: 'pending',
+      createdAt: new Date()
+    };
+
+    this.orderService.createOrder(order).subscribe({
+      next: () => {
+        this.isLoading.set(false);
+        this.isSuccess.set(true);
+        this.cart.clearCart();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      error: (err) => {
+        this.isLoading.set(false);
+        this.error.set(err.message || 'An unexpected error occurred. Please try again.');
+      }
+    });
+  }
+}

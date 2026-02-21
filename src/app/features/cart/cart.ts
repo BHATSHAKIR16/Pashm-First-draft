@@ -84,7 +84,7 @@ import { SeoService } from '../../core/services/seo';
                 </div>
               </div>
 
-              <button class="w-full btn-primary mb-4">Proceed to Checkout</button>
+              <button routerLink="/checkout" class="w-full btn-primary mb-4">Proceed to Checkout</button>
               <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40 text-center">
                 Secure payment powered by Al-Masrah
               </p>

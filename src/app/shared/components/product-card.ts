@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   imports: [CommonModule, RouterLink],
   template: `
     <div class="group cursor-pointer">
-      <div class="relative aspect-[3/4] overflow-hidden mb-6 product-frame">
+      <div class="relative aspect-[3/4] overflow-hidden mb-6 product-frame" [routerLink]="['/product', product().slug]">
         <img
           [src]="product().images[0]"
           [alt]="product().name"

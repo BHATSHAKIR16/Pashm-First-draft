@@ -123,78 +123,6 @@ import { DOCUMENT } from '@angular/common';
             </div>
           </div>
         </div>
-
-        <!-- Heritage Details -->
-        <section class="py-16 bg-brand-sand/30 bg-subtle-pattern border-y border-brand-gold/10">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-              <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-3">Distinguishing Features</p>
-              <h2 class="text-4xl md:text-5xl font-serif italic">Heritage Details</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-              <div class="text-center space-y-4">
-                <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                  <mat-icon class="text-brand-pearl text-xl">air</mat-icon>
-                </div>
-                <h4 class="text-lg font-serif">Ethereal Lightness</h4>
-                <p class="text-xs text-brand-charcoal/60 leading-relaxed">Remarkably weightless yet exceptionally warm, a testament to the fine micron count of pure hand-spun pashm.</p>
-              </div>
-              <div class="text-center space-y-4">
-                <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                  <mat-icon class="text-brand-pearl text-xl">auto_fix_high</mat-icon>
-                </div>
-                <h4 class="text-lg font-serif">Hand-Embroidered Borders</h4>
-                <p class="text-xs text-brand-charcoal/60 leading-relaxed">Intricate needlework using traditional Sozni techniques, reflecting centuries of nomadic artistry and storytelling.</p>
-              </div>
-              <div class="text-center space-y-4">
-                <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                  <mat-icon class="text-brand-pearl text-xl">flare</mat-icon>
-                </div>
-                <h4 class="text-lg font-serif">Rare Cashmere Fibers</h4>
-                <p class="text-xs text-brand-charcoal/60 leading-relaxed">Sourced exclusively from the softest underfleece of the Changthangi goat, harvested only once a year.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Care Ritual -->
-        <section class="py-20 bg-brand-sand/10">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div class="aspect-[3/4] product-frame overflow-hidden">
-              <img src="https://picsum.photos/seed/craft/800/1000" alt="Preservation Artistry" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
-            </div>
-            <div class="space-y-12">
-              <div>
-                <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Preservation Artistry</p>
-                <h2 class="text-4xl md:text-5xl font-serif italic mb-8">The Care Ritual</h2>
-              </div>
-              
-              <div class="space-y-8">
-                <div class="flex gap-8">
-                  <span class="text-2xl font-serif italic text-brand-gold/40">01</span>
-                  <div>
-                    <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">Gentle Hand Wash</h4>
-                    <p class="text-xs text-brand-charcoal/60 leading-relaxed">Cleanse sparingly using tepid water and mild silk-specialized detergent. Avoid rubbing to preserve the delicate structure of the fibers.</p>
-                  </div>
-                </div>
-                <div class="flex gap-8">
-                  <span class="text-2xl font-serif italic text-brand-gold/40">02</span>
-                  <div>
-                    <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">Natural Air Dry</h4>
-                    <p class="text-xs text-brand-charcoal/60 leading-relaxed">Lay flat on a clean, light-colored towel away from direct sunlight. Reshape gently while damp to maintain its original proportions.</p>
-                  </div>
-                </div>
-                <div class="flex gap-8">
-                  <span class="text-2xl font-serif italic text-brand-gold/40">03</span>
-                  <div>
-                    <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">Breathable Storage</h4>
-                    <p class="text-xs text-brand-charcoal/60 leading-relaxed">Store in a cool, dry place within its signature Al-Masrah muslin bag. Avoid hanging to prevent fiber stretching over time.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       } @else {
         <div class="text-center py-32">
           <h2 class="text-3xl font-serif mb-8">Product not found</h2>
@@ -202,6 +130,80 @@ import { DOCUMENT } from '@angular/common';
         </div>
       }
     </div>
+
+    @if (product(); as p) {
+      <!-- Heritage Details Strip -->
+      <section class="py-16 bg-brand-sand/30 bg-subtle-pattern border-y border-brand-gold/10 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-3">Distinguishing Features</p>
+            <h2 class="text-4xl md:text-5xl font-serif italic">Heritage Details</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="text-center space-y-4">
+              <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <mat-icon class="text-brand-pearl text-xl">air</mat-icon>
+              </div>
+              <h4 class="text-lg font-serif">Ethereal Lightness</h4>
+              <p class="text-xs text-brand-charcoal/60 leading-relaxed">Remarkably weightless yet exceptionally warm, a testament to the fine micron count of pure hand-spun pashm.</p>
+            </div>
+            <div class="text-center space-y-4">
+              <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <mat-icon class="text-brand-pearl text-xl">auto_fix_high</mat-icon>
+              </div>
+              <h4 class="text-lg font-serif">Hand-Embroidered Borders</h4>
+              <p class="text-xs text-brand-charcoal/60 leading-relaxed">Intricate needlework using traditional Sozni techniques, reflecting centuries of nomadic artistry and storytelling.</p>
+            </div>
+            <div class="text-center space-y-4">
+              <div class="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <mat-icon class="text-brand-pearl text-xl">flare</mat-icon>
+              </div>
+              <h4 class="text-lg font-serif">Rare Cashmere Fibers</h4>
+              <p class="text-xs text-brand-charcoal/60 leading-relaxed">Sourced exclusively from the softest underfleece of the Changthangi goat, harvested only once a year.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Care Ritual -->
+      <section class="py-20 bg-brand-sand/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div class="aspect-[3/4] product-frame overflow-hidden">
+            <img src="https://picsum.photos/seed/craft/800/1000" alt="Preservation Artistry" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          </div>
+          <div class="space-y-12">
+            <div>
+              <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Preservation Artistry</p>
+              <h2 class="text-4xl md:text-5xl font-serif italic mb-8">The Care Ritual</h2>
+            </div>
+            
+            <div class="space-y-8">
+              <div class="flex gap-8">
+                <span class="text-2xl font-serif italic text-brand-gold/40">01</span>
+                <div>
+                  <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">Gentle Hand Wash</h4>
+                  <p class="text-xs text-brand-charcoal/60 leading-relaxed">Cleanse sparingly using tepid water and mild silk-specialized detergent. Avoid rubbing to preserve the delicate structure of the fibers.</p>
+                </div>
+              </div>
+              <div class="flex gap-8">
+                <span class="text-2xl font-serif italic text-brand-gold/40">02</span>
+                <div>
+                  <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">Natural Air Dry</h4>
+                  <p class="text-xs text-brand-charcoal/60 leading-relaxed">Lay flat on a clean, light-colored towel away from direct sunlight. Reshape gently while damp to maintain its original proportions.</p>
+                </div>
+              </div>
+              <div class="flex gap-8">
+                <span class="text-2xl font-serif italic text-brand-gold/40">03</span>
+                <div>
+                  <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">Breathable Storage</h4>
+                  <p class="text-xs text-brand-charcoal/60 leading-relaxed">Store in a cool, dry place within its signature Al-Masrah muslin bag. Avoid hanging to prevent fiber stretching over time.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,0 +1,7 @@
+{
+  "name": "AL-MASRAH | Premium Pashmina Craftsmanship",
+  "description": "Redefining luxury pashmina for the modern connoisseur. Rooted in heritage, crafted for eternity.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

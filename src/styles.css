@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --color-warm-pearl: #F7F3EE;
+  --color-soft-sand: #EFE7DD;
+  --color-arabian-gold: #C6A85E;
+  --color-deep-charcoal: #1E1E1E;
+  
+  /* Brand colors from AL-MASRAH style guide */
+  --color-brand-gold: #C6A85E;
+  --color-brand-charcoal: #1E1E1E;
+  --color-brand-pearl: #F7F3EE;
+  --color-brand-sand: #EFE7DD;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-brand-pearl text-brand-charcoal antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal;
+  }
+}
+
+.btn-primary {
+  @apply px-8 py-3 bg-brand-charcoal text-white font-medium transition-all hover:opacity-90 active:scale-95 uppercase text-xs tracking-widest;
+}
+
+.btn-gold {
+  @apply px-8 py-3 bg-brand-gold text-white font-medium transition-all hover:opacity-90 active:scale-95 uppercase text-xs tracking-widest;
+}
+
+.btn-outline {
+  @apply px-8 py-3 border border-brand-charcoal text-brand-charcoal font-medium transition-all hover:bg-brand-charcoal hover:text-white uppercase text-xs tracking-widest;
+}
+
+.btn-secondary {
+  @apply px-8 py-3 bg-brand-sand text-brand-charcoal font-medium transition-all hover:opacity-80 active:scale-95 uppercase text-xs tracking-widest;
+}
+
+/* Subtle geometric frame for product cards */
+.product-frame {
+  @apply border border-transparent transition-all duration-500;
+}
+
+.group:hover .product-frame {
+  @apply border-brand-charcoal/10;
+}

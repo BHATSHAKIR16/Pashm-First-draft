@@ -155,4 +155,8 @@ export class ProductService {
       .slice(0, 4);
     return of(related).pipe(delay(500));
   }
+
+  getFeaturedProducts(): Observable<Product[]> {
+    return of(this.mockProducts.slice(0, 3)).pipe(delay(500));
+  }
 }

@@ -1,60 +1,214 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SeoService } from '../../core/services/seo';
+import { ProductService } from '../../core/services/product';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { interval } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
-  imports: [MatIconModule, RouterLink],
+  standalone: true,
+  imports: [CommonModule, MatIconModule, RouterLink, ReactiveFormsModule],
   template: `
+    <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
-      <img
-        src="https://picsum.photos/seed/hero/1920/1080"
-        alt="Hero Background"
-        class="absolute inset-0 w-full h-full object-cover opacity-20"
-        referrerPolicy="no-referrer"
-      />
-      <div class="relative z-10 text-center px-4 max-w-4xl">
-        <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-8 animate-fade-in">Established 1984</p>
-        <h1 class="text-6xl md:text-8xl font-serif italic mb-12 leading-tight">
-          Textural Overlay <span class="text-brand-gold">&</span> Design Variant
+      <!-- Video Background -->
+      <div class="absolute inset-0 z-0">
+        <video 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          class="w-full h-full object-cover opacity-60"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-walking-on-the-beach-with-a-scarf-40038-large.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-charcoal/40 via-transparent to-brand-pearl/20"></div>
+      </div>
+
+      <div class="relative z-10 text-center px-4 max-w-5xl">
+        <p class="text-[10px] uppercase tracking-[0.5em] text-brand-gold mb-8 animate-fade-in">Authentic Middle Eastern Luxury</p>
+        <h1 class="text-6xl md:text-8xl font-serif mb-12 leading-tight text-white drop-shadow-sm animate-slide-up">
+          Timeless Pashmina.<br>
+          Crafted with Heritage.
         </h1>
-        <p class="text-sm md:text-base text-brand-charcoal/70 mb-12 font-sans leading-relaxed tracking-wide max-w-2xl mx-auto">
-          A refined evolution focusing on sharp premium minimalism, replacing organic green tones with warm textural surfaces and precise geometric framing.
-        </p>
         
-        <div class="flex flex-wrap justify-center gap-6">
-          <button routerLink="/collection" class="btn-primary">The Collection</button>
-          <button class="btn-outline">Our Heritage</button>
+        <div class="animate-slide-up animate-delay-400">
+          <button routerLink="/collection" class="btn-gold px-12 py-4">Explore Collection</button>
         </div>
       </div>
     </section>
 
-    <section class="py-32 bg-white">
+    <!-- Trust Strip -->
+    <section class="py-12 bg-brand-sand/30 border-y border-brand-gold/10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-          <div class="group">
-            <div class="aspect-[3/4] overflow-hidden mb-8 product-frame">
-              <img src="https://picsum.photos/seed/everyday/600/800" alt="Everyday Essentials" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-            </div>
-            <h3 class="text-2xl font-serif mb-2">Everyday Essentials</h3>
-            <p class="text-xs text-brand-gold uppercase tracking-widest">Dubai, UAE</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="flex flex-col items-center text-center gap-3">
+            <mat-icon class="text-brand-gold">pan_tool</mat-icon>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Handwoven Craftsmanship</span>
           </div>
-          <div class="group">
-            <div class="aspect-[3/4] overflow-hidden mb-8 product-frame">
-              <img src="https://picsum.photos/seed/signature/600/801" alt="Signature Weaves" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-            </div>
-            <h3 class="text-2xl font-serif mb-2">Signature Weaves</h3>
-            <p class="text-xs text-brand-gold uppercase tracking-widest">Riyadh, KSA</p>
+          <div class="flex flex-col items-center text-center gap-3">
+            <mat-icon class="text-brand-gold">eco</mat-icon>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Ethical Sourcing</span>
           </div>
-          <div class="group">
-            <div class="aspect-[3/4] overflow-hidden mb-8 product-frame">
-              <img src="https://picsum.photos/seed/limited/600/802" alt="Limited Editions" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-            </div>
-            <h3 class="text-2xl font-serif mb-2">Limited Editions</h3>
-            <p class="text-xs text-brand-gold uppercase tracking-widest">Abu Dhabi, UAE</p>
+          <div class="flex flex-col items-center text-center gap-3">
+            <mat-icon class="text-brand-gold">cloud</mat-icon>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Premium Softness</span>
+          </div>
+          <div class="flex flex-col items-center text-center gap-3">
+            <mat-icon class="text-brand-gold">verified</mat-icon>
+            <span class="text-[10px] uppercase tracking-widest font-bold">Trusted by Middle East Wholesalers</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Featured Collection -->
+    <section class="py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-4">Our Heritage Gallery</p>
+          <div class="w-24 h-px bg-brand-gold/30 mx-auto mb-8"></div>
+          <h2 class="text-4xl md:text-5xl font-serif italic">Curated Masterpieces</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          @for (product of featuredProducts(); track product.id) {
+            <div class="group cursor-pointer" [routerLink]="['/product', product.slug]">
+              <div class="relative aspect-[3/4] overflow-hidden mb-8 product-frame">
+                <img 
+                  [src]="product.images[0]" 
+                  [alt]="product.name" 
+                  class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div class="absolute inset-0 bg-brand-charcoal/0 group-hover:bg-brand-charcoal/20 transition-colors duration-500 flex items-end p-8">
+                  <div class="text-white opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                    <p class="text-[10px] uppercase tracking-widest mb-2 text-brand-gold">Discover Piece</p>
+                    <h3 class="text-2xl font-serif italic">{{ product.name }}</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <h4 class="text-lg font-serif mb-1">{{ product.name }}</h4>
+                <p class="text-xs text-brand-gold uppercase tracking-widest">{{ product.price | number }} {{ product.currency }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Craft Story -->
+    <section class="py-32 bg-brand-sand/10 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div class="relative aspect-[4/5] product-frame overflow-hidden animate-on-scroll">
+            <img 
+              src="https://picsum.photos/seed/craftsman/800/1000" 
+              alt="Craftsmanship" 
+              class="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          <div class="space-y-12 animate-on-scroll">
+            <div class="flex items-center gap-4">
+              <mat-icon class="text-brand-gold/40">format_quote</mat-icon>
+              <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold">Our Heritage</p>
+            </div>
+            <h2 class="text-5xl md:text-6xl font-serif italic leading-tight">Woven in the Valley,<br>Worn by the World</h2>
+            <div class="space-y-6 text-brand-charcoal/70 leading-relaxed font-sans max-w-lg">
+              <p>In the heart of the ancient valleys, our master artisans breathe life into every thread. Using techniques preserved for centuries, we create pashminas that are not just accessories, but heirlooms.</p>
+              <p>We blend this timeless tradition with modern aesthetics, ensuring each piece resonates with the sophisticated tastes of the Middle East.</p>
+            </div>
+            <button class="btn-outline border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white">Read Our Story</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-32 bg-white">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <div class="flex justify-center gap-1 text-brand-gold mb-12">
+          @for (star of [1,2,3,4,5]; track star) {
+            <mat-icon class="text-sm">star</mat-icon>
+          }
+        </div>
+
+        <div class="relative h-48">
+          @for (testimonial of testimonials; track testimonial.id; let i = $index) {
+            <div 
+              class="absolute inset-0 transition-all duration-1000 flex flex-col items-center"
+              [class.opacity-100]="activeTestimonial() === i"
+              [class.opacity-0]="activeTestimonial() !== i"
+              [class.translate-y-0]="activeTestimonial() === i"
+              [class.translate-y-4]="activeTestimonial() !== i"
+            >
+              <blockquote class="text-2xl md:text-3xl font-serif italic mb-8 leading-relaxed">
+                "{{ testimonial.text }}"
+              </blockquote>
+              <cite class="not-italic">
+                <p class="text-[10px] uppercase tracking-[0.3em] font-bold mb-1">{{ testimonial.author }}</p>
+                <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40">{{ testimonial.location }}</p>
+              </cite>
+            </div>
+          }
+        </div>
+
+        <div class="flex justify-center gap-3 mt-12">
+          @for (testimonial of testimonials; track testimonial.id; let i = $index) {
+            <button 
+              (click)="activeTestimonial.set(i)"
+              class="w-2 h-2 rounded-full transition-all duration-500"
+              [class.bg-brand-gold]="activeTestimonial() === i"
+              [class.bg-brand-gold/20]="activeTestimonial() !== i"
+              [class.w-6]="activeTestimonial() === i"
+              [attr.aria-label]="'Go to testimonial ' + (i + 1)"
+            ></button>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-32 bg-brand-sand/20 border-t border-brand-gold/10">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-serif italic mb-6">Join Our Circle of Elegance</h2>
+        <p class="text-xs text-brand-charcoal/60 uppercase tracking-widest mb-12">Exclusive access to new arrivals, wholesale opportunities, and private sales.</p>
+        
+        <form [formGroup]="newsletterForm" (ngSubmit)="onNewsletterSubmit()" class="flex flex-col sm:flex-row gap-4">
+          <input 
+            type="email" 
+            formControlName="email"
+            placeholder="Enter your email address"
+            class="flex-grow bg-white border border-brand-gold/20 px-6 py-4 outline-none focus:border-brand-gold transition-colors text-sm font-sans"
+          />
+          <button 
+            type="submit" 
+            [disabled]="newsletterForm.invalid || isSubmitting()"
+            class="btn-gold px-12 py-4 disabled:opacity-50"
+          >
+            @if (isSubmitting()) {
+              <span class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin inline-block mr-2"></span>
+            }
+            Subscribe
+          </button>
+        </form>
+        
+        @if (newsletterForm.get('email')?.touched && newsletterForm.get('email')?.errors?.['email']) {
+          <p class="text-[10px] text-red-500 uppercase tracking-widest mt-4">Please enter a valid email address</p>
+        }
+        
+        @if (subscribeSuccess()) {
+          <p class="text-[10px] text-brand-gold uppercase tracking-widest mt-4 animate-fade-in">Thank you for joining our circle.</p>
+        }
+
+        <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40 mt-8">By subscribing you agree to our Terms & Privacy Policy.</p>
       </div>
     </section>
   `,
@@ -62,11 +216,68 @@ import { SeoService } from '../../core/services/seo';
 })
 export class HomeComponent implements OnInit {
   private seo = inject(SeoService);
+  private productService = inject(ProductService);
+  private fb = inject(FormBuilder);
+
+  featuredProducts = toSignal(this.productService.getFeaturedProducts());
+  
+  activeTestimonial = signal(0);
+  testimonials = [
+    {
+      id: 1,
+      text: "The quality is unmatched. I purchased a wholesale lot for my boutique in Dubai, and my customers are in love with the softness and the intricate designs.",
+      author: "Fatima Al-Sayed",
+      location: "Dubai, UAE"
+    },
+    {
+      id: 2,
+      text: "A true heritage piece. The saffron sands pashmina is my absolute favorite. It feels like wearing a piece of history.",
+      author: "Zaid Al-Harbi",
+      location: "Riyadh, KSA"
+    },
+    {
+      id: 3,
+      text: "Exceptional service and exquisite craftsmanship. The ivory whisper was the perfect addition to my bridal collection.",
+      author: "Lina Mansour",
+      location: "Abu Dhabi, UAE"
+    }
+  ];
+
+  newsletterForm: FormGroup;
+  isSubmitting = signal(false);
+  subscribeSuccess = signal(false);
+
+  constructor() {
+    this.newsletterForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
 
   ngOnInit() {
     this.seo.updateTitle('Premium Pashmina Craftsmanship');
     this.seo.updateMetaTags([
       { name: 'description', content: 'AL-MASRAH: Redefining luxury pashmina for the modern connoisseur.' }
     ]);
+
+    // Auto-slide testimonials
+    interval(6000).pipe(
+      map(() => (this.activeTestimonial() + 1) % this.testimonials.length)
+    ).subscribe(next => this.activeTestimonial.set(next));
+  }
+
+  onNewsletterSubmit() {
+    if (this.newsletterForm.invalid || this.isSubmitting()) return;
+
+    this.isSubmitting.set(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      this.isSubmitting.set(false);
+      this.subscribeSuccess.set(true);
+      this.newsletterForm.reset();
+      
+      setTimeout(() => this.subscribeSuccess.set(false), 5000);
+    }, 1500);
   }
 }
+

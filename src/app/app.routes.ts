@@ -23,6 +23,10 @@ export const routes: Routes = [
         loadComponent: () => import('./features/product-detail/product-detail').then(m => m.ProductDetailComponent)
       },
       {
+        path: 'about',
+        loadComponent: () => import('./features/about/about').then(m => m.AboutComponent)
+      },
+      {
         path: 'checkout',
         loadComponent: () => import('./features/checkout/checkout').then(m => m.CheckoutComponent)
       }

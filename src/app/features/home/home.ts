@@ -20,24 +20,28 @@ import { map } from 'rxjs/operators';
       <div class="absolute inset-0 z-0">
         <video 
           autoplay 
-          muted 
-          loop 
-          playsinline 
-          class="w-full h-full object-cover opacity-60"
+          [muted] = "true"  
+          playsinline
+          preload="auto"
+          class="hero-video w-full h-full object-cover opacity-90"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-walking-on-the-beach-with-a-scarf-40038-large.mp4" type="video/mp4">
+          <source src="assets/combined-hero-video.mp4" type="video/mp4"/>
         </video>
-        <div class="absolute inset-0 bg-gradient-to-b from-brand-charcoal/40 via-transparent to-brand-pearl/20"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-charcoal/80 via-brand-charcoal/30 to-brand-charcoal/60"></div>
       </div>
 
       <div class="relative z-10 text-center px-4 max-w-5xl">
-        <p class="text-[10px] uppercase tracking-[0.5em] text-brand-gold mb-8 animate-fade-in">Authentic Middle Eastern Luxury</p>
-        <h1 class="text-6xl md:text-8xl font-serif mb-12 leading-tight text-white drop-shadow-sm animate-slide-up">
+        <div class="flex items-center justify-center gap-3 sm:gap-5 mb-8 animate-fade-in px-4">
+          <span class="hidden sm:block w-10 h-px bg-brand-gold/70 shrink-0"></span>
+          <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.3em] sm:tracking-[0.45em] text-white italic drop-shadow-md text-center">Authentic Middle Eastern Luxury</p>
+          <span class="hidden sm:block w-10 h-px bg-brand-gold/70 shrink-0"></span>
+        </div>
+        <h1 class="text-5xl md:text-8xl font-serif italic mb-12 leading-tight text-white drop-shadow-sm animate-slide-up delay-400">
           Timeless Pashmina.<br>
           Crafted with Heritage.
         </h1>
         
-        <div class="animate-slide-up animate-delay-400">
+        <div class="animate-slide-up animate-delay-600">
           <button routerLink="/collection" class="btn-gold px-12 py-4">Explore Collection</button>
         </div>
       </div>
@@ -108,11 +112,12 @@ import { map } from 'rxjs/operators';
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div class="relative aspect-[4/5] product-frame overflow-hidden animate-on-scroll">
-            <img 
-              src="https://picsum.photos/seed/craftsman/800/1000" 
-              alt="Craftsmanship" 
+            <img
+              src="assets/weaver.avif"
+              alt="Master artisan weaving pashmina in the valley"
               class="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div class="space-y-12 animate-on-scroll">
@@ -220,7 +225,7 @@ export class HomeComponent implements OnInit {
   private fb = inject(FormBuilder);
 
   featuredProducts = toSignal(this.productService.getFeaturedProducts());
-  
+
   activeTestimonial = signal(0);
   testimonials = [
     {
@@ -269,13 +274,13 @@ export class HomeComponent implements OnInit {
     if (this.newsletterForm.invalid || this.isSubmitting()) return;
 
     this.isSubmitting.set(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       this.isSubmitting.set(false);
       this.subscribeSuccess.set(true);
       this.newsletterForm.reset();
-      
+
       setTimeout(() => this.subscribeSuccess.set(false), 5000);
     }, 1500);
   }

@@ -3,223 +3,88 @@ import { NgClass } from '@angular/common';
 import { SeoService } from '../../core/services/seo';
 
 interface Pillar {
-    icon: string;
-    title: string;
-    body: string;
+  icon: string;
+  title: string;
+  body: string;
 }
 
 interface Stage {
-    num: string;
-    seed: string;
-    alt: string;
-    title: string;
-    body: string;
-    offset: string; // responsive top-margin for stagger (e.g. 'lg:mt-12')
+  num: string;
+  seed: string;
+  alt: string;
+  title: string;
+  body: string;
+  offset: string;
 }
 
 @Component({
-    selector: 'app-about',
-    standalone: true,
-    imports: [NgClass],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    styles: [':host { display: block; }'],
-    template: `
-    <!-- ===================== HERO ===================== -->
-    <section class="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
-      <div class="absolute inset-0 z-0">
-        <img
-          src="https://picsum.photos/seed/almasrah-desert-fibers/1920/1080"
-          alt="Raw cashmere fibers in warm golden hour desert lighting"
-          class="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-        <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(30,30,30,0.3) 0%, rgba(198,168,94,0.2) 100%);"></div>
-        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(198,168,94,0.4) 0%, transparent 60%);"></div>
-      </div>
-
-      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <span class="text-white text-xs font-bold tracking-[0.4em] uppercase mb-6 block drop-shadow-sm">
-          The Essence of Heritage
-        </span>
-        <h1 class="text-5xl md:text-8xl text-white font-medium mb-8 leading-[1.1] drop-shadow-xl">
-          Our Legacy of <br/><span class="italic">Softness</span>
-        </h1>
-        <div class="w-20 h-0.5 bg-brand-gold mx-auto mb-8"></div>
-        <p class="text-brand-pearl/90 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
-          Since 1982, weaving stories of heritage and elegance under the warmth of the golden desert sun.
-        </p>
-      </div>
-    </section>
-
-    <!-- ===================== STORY ===================== -->
-    <section class="py-32 bg-brand-pearl relative overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none about-paisley"></div>
-
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-
-          <div class="relative">
-            <div class="absolute -top-6 -left-6 w-32 h-32 border-t-2 border-l-2 border-brand-gold/30"></div>
-            <div class="absolute -bottom-6 -right-6 w-32 h-32 border-b-2 border-r-2 border-brand-gold/30"></div>
-            <div class="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
-              <img
-                src="https://picsum.photos/seed/master-weaver-portrait/800/1000"
-                alt="Portrait of a master weaver in golden hour light"
-                class="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div class="absolute inset-0 bg-brand-gold/10 mix-blend-overlay"></div>
-            </div>
-          </div>
-
-          <div class="space-y-10">
-            <div class="space-y-4">
-              <span class="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase block">Our Heritage</span>
-              <h2 class="text-4xl md:text-6xl text-brand-charcoal leading-tight">
-                Woven in the <br/><span class="italic text-brand-gold">Desert Glow</span>
-              </h2>
-            </div>
-            <div class="space-y-6 text-brand-charcoal/70 text-lg font-light leading-relaxed">
-              <p>Al-Masrah was founded with a singular vision: to honor the ancient craftsmanship of the Himalayas while embracing the majestic warmth of Middle Eastern traditions.</p>
-              <p>Our journey is a testament to the enduring beauty of the hand-crafted. Each fiber is treated with the reverence it deserves, bathed in the same golden light that has inspired poets and artisans for generations.</p>
-              <p>Today, we continue to bridge these worlds, creating pashminas that are more than just garments—they are wearable heirlooms that carry the warmth of the sun and the soul of the artisan.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== PILLARS ===================== -->
-    <div class="bg-brand-sand py-20 border-y border-brand-gold/20">
-      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-          @for (pillar of pillars; track pillar.title) {
-            <div class="flex flex-col items-center text-center">
-              <span class="material-symbols-outlined text-brand-gold text-4xl mb-6 font-light">{{ pillar.icon }}</span>
-              <h3 class="text-xl text-brand-charcoal mb-3 font-medium">{{ pillar.title }}</h3>
-              <p class="text-brand-charcoal/60 text-sm leading-relaxed max-w-xs">{{ pillar.body }}</p>
-            </div>
-          }
-        </div>
-      </div>
-    </div>
-
-    <!-- ===================== PROCESS ===================== -->
-    <section class="py-32 bg-brand-pearl relative overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none opacity-50 about-diamond"></div>
-
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-
-        <div class="text-center mb-24">
-          <span class="text-brand-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-4 block">The Art of Creation</span>
-          <h2 class="text-4xl md:text-6xl text-brand-charcoal italic font-normal leading-tight">The Four Stages of Softness</h2>
-          <div class="w-16 h-px bg-brand-gold/30 mx-auto mt-8"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-20 items-start">
-          @for (stage of stages; track stage.num) {
-            <div class="group flex flex-col items-start text-left" [ngClass]="stage.offset">
-              <div class="relative w-full aspect-[4/5] overflow-hidden mb-10 arch-frame
-                          shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)]
-                          transition-all duration-700 hover:-translate-y-2">
-                <img
-                  [src]="'https://picsum.photos/seed/' + stage.seed + '/600/750'"
-                  [alt]="stage.alt"
-                  class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div class="space-y-4 px-1">
-                <span class="text-brand-gold font-serif text-2xl italic block opacity-80">{{ stage.num }}</span>
-                <h3 class="text-2xl text-brand-charcoal tracking-wide">{{ stage.title }}</h3>
-                <p class="text-brand-charcoal/60 text-sm font-light leading-relaxed">{{ stage.body }}</p>
-              </div>
-            </div>
-          }
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===================== QUOTE ===================== -->
-    <section class="py-32 bg-brand-sand">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <div class="mb-12">
-          <span class="material-symbols-outlined text-5xl text-brand-gold/40">format_quote</span>
-        </div>
-        <p class="font-serif text-3xl md:text-5xl text-brand-charcoal/80 leading-snug mb-12 italic">
-          "Our pieces are designed to be a second skin, reflecting the warmth of our heritage and the timeless elegance of the desert's golden hour."
-        </p>
-        <div class="inline-flex items-center space-x-4">
-          <div class="w-12 h-px bg-brand-gold"></div>
-          <p class="font-sans text-sm font-bold tracking-[0.3em] uppercase text-brand-charcoal">The Al-Masrah Philosophy</p>
-          <div class="w-12 h-px bg-brand-gold"></div>
-        </div>
-      </div>
-    </section>
-  `,
+  selector: 'app-about',
+  standalone: true,
+  imports: [NgClass],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './about.html',
+  styleUrl: './about.css',
 })
 export class AboutComponent {
-    private readonly seo = inject(SeoService);
+  private readonly seo = inject(SeoService);
 
-    constructor() {
-        this.seo.updateTitle('Our Legacy of Softness — Al-Masrah Heritage');
-        this.seo.updateMetaTags([
-            { name: 'description', content: 'Since 1982, Al-Masrah has been weaving stories of heritage and elegance. Discover the four stages of softness and the artisans behind every piece.' },
-        ]);
-    }
+  constructor() {
+    this.seo.updateTitle('Our Legacy of Softness — Al-Masrah Heritage');
+    this.seo.updateMetaTags([
+      { name: 'description', content: 'Since 1982, Al-Masrah has been weaving stories of heritage and elegance. Discover the four stages of softness and the artisans behind every piece.' },
+    ]);
+  }
 
-    readonly pillars: Pillar[] = [
-        {
-            icon: 'eco',
-            title: 'Ethical Sourcing',
-            body: 'Honoring nature through cruelty-free harvesting in harmony with seasonal cycles.',
-        },
-        {
-            icon: 'auto_awesome',
-            title: 'Authentic Craft',
-            body: 'Preserving ancestral techniques that require months of patient, rhythmic dedication.',
-        },
-        {
-            icon: 'temple_hindu',
-            title: 'Artisan Legacy',
-            body: 'Empowering communities and sustaining the cultural fabric of master weaving families.',
-        },
-    ];
+  readonly pillars: Pillar[] = [
+    {
+      icon: 'eco',
+      title: 'Ethical Sourcing',
+      body: 'Honoring nature through cruelty-free harvesting in harmony with seasonal cycles.',
+    },
+    {
+      icon: 'auto_awesome',
+      title: 'Authentic Craft',
+      body: 'Preserving ancestral techniques that require months of patient, rhythmic dedication.',
+    },
+    {
+      icon: 'temple_hindu',
+      title: 'Artisan Legacy',
+      body: 'Empowering communities and sustaining the cultural fabric of master weaving families.',
+    },
+  ];
 
-    readonly stages: Stage[] = [
-        {
-            num: '01',
-            seed: 'stage-clean-pashmina',
-            alt: 'Cleaning and sorting raw pashmina fibers',
-            title: 'Cleaning & Sorting',
-            body: "The finest 'Pashm' is selected by hand, ensuring only the cloud-like undercoat remains for production.",
-            offset: '',
-        },
-        {
-            num: '02',
-            seed: 'spinning-wheel-trad',
-            alt: 'Traditional wooden spinning wheel',
-            title: 'Artisanal Spinning',
-            body: 'Traditional wooden wheels transform raw fiber into delicate, translucent threads with meditative precision.',
-            offset: 'lg:mt-12',
-        },
-        {
-            num: '03',
-            seed: 'handloom-ancient',
-            alt: 'Ancient handloom weaving fabric',
-            title: 'Hand Weaving',
-            body: 'On ancient handlooms, threads are intertwined into a breathable, ethereal fabric that feels like a second skin.',
-            offset: 'lg:mt-6',
-        },
-        {
-            num: '04',
-            seed: 'embroidery-finish',
-            alt: 'Detailed hand embroidery and finishing',
-            title: 'Finishing Touches',
-            body: 'Hand-embroidery and soft washing bring the final piece to life, ensuring it meets our standard of ethereal softness.',
-            offset: 'lg:mt-16',
-        },
-    ];
+  readonly stages: Stage[] = [
+    {
+      num: '01',
+      seed: 'stage-clean-pashmina',
+      alt: 'Cleaning and sorting raw pashmina fibers',
+      title: 'Cleaning & Sorting',
+      body: "The finest 'Pashm' is selected by hand, ensuring only the cloud-like undercoat remains for production.",
+      offset: '',
+    },
+    {
+      num: '02',
+      seed: 'spinning-wheel-trad',
+      alt: 'Traditional wooden spinning wheel',
+      title: 'Artisanal Spinning',
+      body: 'Traditional wooden wheels transform raw fiber into delicate, translucent threads with meditative precision.',
+      offset: 'lg:mt-12',
+    },
+    {
+      num: '03',
+      seed: 'handloom-ancient',
+      alt: 'Ancient handloom weaving fabric',
+      title: 'Hand Weaving',
+      body: 'On ancient handlooms, threads are intertwined into a breathable, ethereal fabric that feels like a second skin.',
+      offset: 'lg:mt-6',
+    },
+    {
+      num: '04',
+      seed: 'embroidery-finish',
+      alt: 'Detailed hand embroidery and finishing',
+      title: 'Finishing Touches',
+      body: 'Hand-embroidery and soft washing bring the final piece to life, ensuring it meets our standard of ethereal softness.',
+      offset: 'lg:mt-16',
+    },
+  ];
 }

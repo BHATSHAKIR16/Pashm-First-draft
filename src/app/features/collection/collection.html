@@ -1,79 +1,109 @@
-<section class="pt-24 pb-12 bg-brand-pearl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Timeless Elegance</p>
-        <h1 class="text-5xl md:text-7xl font-serif italic mb-12">The Collection</h1>
+<!-- Collection Hero -->
+<section class="relative w-full h-[75vh] overflow-hidden">
+    <!-- Background Image (Ken-Burns zoom-out) -->
+    <img src="assets/Stacked-pashmina.png" alt="Al-Masrah Collection — Handwoven Pashminas"
+        class="hero-image absolute inset-0 w-full h-full object-cover object-center" />
+
+    <!-- Multi-layer gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-charcoal/30 via-transparent to-brand-charcoal/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-charcoal/10 via-transparent to-brand-charcoal/10"></div>
+
+    <!-- Centered text block -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+        <div class="flex items-center gap-4 mb-6">
+            <div class="hero-eyebrow-line w-10 h-px bg-brand-gold/70"></div>
+            <p class="hero-eyebrow-text text-[9px] uppercase tracking-[0.5em] text-brand-gold font-medium">Timeless
+                Elegance</p>
+            <div class="hero-eyebrow-line w-10 h-px bg-brand-gold/70"></div>
+        </div>
+
+        <h1 class="hero-title text-4xl md:text-8xl font-serif italic text-white drop-shadow-lg leading-none mb-6">
+            Our Collection
+        </h1>
+
+        <p class="hero-subtitle text-[10px] uppercase tracking-[0.4em] text-white/60 max-w-xs leading-relaxed">
+            Handwoven · Heritage · Luxury
+        </p>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="hero-scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <div class="w-px h-8 bg-brand-gold animate-pulse opacity-60"></div>
     </div>
 </section>
 
+
 <!-- Filters Bar -->
 <div class="bg-brand-pearl border-y border-brand-charcoal/5 py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-4">
-        <div class="flex gap-8">
-            <div class="relative group">
-                <button
-                    class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors">
-                    Fabric <mat-icon class="text-xs">expand_more</mat-icon>
-                </button>
-                <div
-                    class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl border border-brand-charcoal/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                    @for (f of fabrics; track f) {
-                    <button (click)="updateFilter('fabric', f)"
-                        class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl transition-colors"
-                        [class.text-brand-gold]="currentFilters().fabric === f">
-                        {{ f }}
-                    </button>
-                    }
-                    <button (click)="updateFilter('fabric', null)"
-                        class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl text-red-400">Clear</button>
-                </div>
-            </div>
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3 md:space-y-0 md:flex md:justify-between md:items-center md:gap-4">
 
-            <div class="relative group">
-                <button
-                    class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors">
-                    Color <mat-icon class="text-xs">expand_more</mat-icon>
-                </button>
-                <div
-                    class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl border border-brand-charcoal/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                    @for (c of colors; track c) {
-                    <button (click)="updateFilter('color', c)"
-                        class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl transition-colors"
-                        [class.text-brand-gold]="currentFilters().color === c">
-                        {{ c }}
-                    </button>
-                    }
-                    <button (click)="updateFilter('color', null)"
-                        class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl text-red-400">Clear</button>
-                </div>
-            </div>
+        <!-- Filters: scrollable on mobile -->
+        <div class="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 md:overflow-visible">
+            <div class="flex gap-6 min-w-max md:min-w-0">
 
-            <div class="relative group">
-                <button
-                    class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors">
-                    Occasion <mat-icon class="text-xs">expand_more</mat-icon>
-                </button>
-                <div
-                    class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl border border-brand-charcoal/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                    @for (o of occasions; track o) {
-                    <button (click)="updateFilter('occasion', o)"
-                        class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl transition-colors"
-                        [class.text-brand-gold]="currentFilters().occasion === o">
-                        {{ o }}
+                <div class="relative group">
+                    <button
+                        class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors whitespace-nowrap">
+                        Fabric <mat-icon class="text-xs">expand_more</mat-icon>
                     </button>
-                    }
-                    <button (click)="updateFilter('occasion', null)"
-                        class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl text-red-400">Clear</button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl border border-brand-charcoal/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                        @for (f of fabrics; track f) {
+                        <button (click)="updateFilter('fabric', f)"
+                            class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl transition-colors"
+                            [class.text-brand-gold]="currentFilters().fabric === f">{{ f }}</button>
+                        }
+                        <button (click)="updateFilter('fabric', null)"
+                            class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl text-red-400">Clear</button>
+                    </div>
                 </div>
+
+                <div class="relative group">
+                    <button
+                        class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors whitespace-nowrap">
+                        Color <mat-icon class="text-xs">expand_more</mat-icon>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl border border-brand-charcoal/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                        @for (c of colors; track c) {
+                        <button (click)="updateFilter('color', c)"
+                            class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl transition-colors"
+                            [class.text-brand-gold]="currentFilters().color === c">{{ c }}</button>
+                        }
+                        <button (click)="updateFilter('color', null)"
+                            class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl text-red-400">Clear</button>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <button
+                        class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors whitespace-nowrap">
+                        Occasion <mat-icon class="text-xs">expand_more</mat-icon>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl border border-brand-charcoal/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                        @for (o of occasions; track o) {
+                        <button (click)="updateFilter('occasion', o)"
+                            class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl transition-colors"
+                            [class.text-brand-gold]="currentFilters().occasion === o">{{ o }}</button>
+                        }
+                        <button (click)="updateFilter('occasion', null)"
+                            class="w-full text-left px-4 py-2 text-[10px] uppercase tracking-widest hover:bg-brand-pearl text-red-400">Clear</button>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <div class="flex items-center gap-8">
-            <p class="text-[10px] uppercase tracking-widest text-brand-charcoal/40">
+        <!-- Count + Sort -->
+        <div class="flex items-center gap-6 shrink-0">
+            <p class="text-[10px] uppercase tracking-widest text-brand-charcoal/40 whitespace-nowrap">
                 Showing {{ products()?.length || 0 }} Products
             </p>
             <div class="relative group">
                 <button
-                    class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors">
+                    class="text-[10px] uppercase tracking-widest flex items-center gap-2 hover:text-brand-gold transition-colors whitespace-nowrap">
                     Sort By <mat-icon class="text-xs">sort</mat-icon>
                 </button>
                 <div
@@ -89,8 +119,11 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+
+
 
 <!-- Product Grid -->
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

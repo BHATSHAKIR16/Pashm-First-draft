@@ -1,27 +1,48 @@
 <!-- ===================== HERO ===================== -->
-<section class="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-        <img src="https://picsum.photos/seed/almasrah-desert-fibers/1920/1080"
-            alt="Raw cashmere fibers in warm golden hour desert lighting" class="w-full h-full object-cover"
-            referrerPolicy="no-referrer" />
-        <div class="absolute inset-0"
-            style="background: linear-gradient(to bottom, rgba(30,30,30,0.3) 0%, rgba(198,168,94,0.2) 100%);"></div>
-        <div class="absolute inset-0"
-            style="background: linear-gradient(to top, rgba(198,168,94,0.4) 0%, transparent 60%);"></div>
+<section class="relative w-full h-[75vh] flex items-center justify-center overflow-hidden">
+
+    <!-- Background: Dal Lake with mountains — Ken-Burns zoom-out on load -->
+    <img src="assets/shikara-dal.png" alt="Dal Lake with the Himalayas at golden hour — the birthplace of pashmina"
+        class="about-hero-image absolute inset-0 w-full h-full object-cover object-center" />
+
+    <!-- Layer 1: dark charcoal veil across the whole image for base legibility -->
+    <div class="absolute inset-0 bg-brand-charcoal/50"></div>
+
+    <!-- Layer 2: strong dark sweep rising from the bottom (mountains area) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/20 to-transparent"></div>
+
+    <!-- Layer 3: subtle warm-gold tint at the very bottom edge -->
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-gold/20 via-transparent to-transparent"
+        style="height: 40%; top: auto; bottom: 0;"></div>
+
+    <!-- Layer 4: narrow central scrim so the headline text area has max contrast -->
+    <div
+        class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-64 bg-gradient-to-b from-transparent via-brand-charcoal/30 to-transparent pointer-events-none">
     </div>
 
+    <!-- Hero content -->
     <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <span class="text-white text-xs font-bold tracking-[0.4em] uppercase mb-6 block drop-shadow-sm">
+        <span class="about-hero-eyebrow text-white/80 text-[9px] font-bold tracking-[0.5em] uppercase mb-6 block">
             The Essence of Heritage
         </span>
-        <h1 class="text-5xl md:text-8xl text-white font-medium mb-8 leading-[1.1] drop-shadow-xl">
-            Our Legacy of <br /><span class="italic">Softness</span>
+
+        <h1 class="about-hero-title text-5xl md:text-8xl text-white font-medium mb-8 leading-[1.1] drop-shadow-2xl">
+            Our Legacy of <br /><span class="italic text-brand-gold">Softness</span>
         </h1>
-        <div class="w-20 h-0.5 bg-brand-gold mx-auto mb-8"></div>
-        <p class="text-brand-pearl/90 text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
+
+        <div class="about-hero-divider w-20 h-0.5 bg-brand-gold mx-auto mb-8"></div>
+
+        <p
+            class="about-hero-tagline text-white/75 text-base md:text-lg font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
             Since 1982, weaving stories of heritage and elegance under the warmth of the golden desert sun.
         </p>
     </div>
+
+    <!-- Scroll cue -->
+    <div class="about-hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <div class="w-px h-8 bg-brand-gold/70 animate-pulse"></div>
+    </div>
+
 </section>
 
 <!-- ===================== STORY ===================== -->
@@ -35,9 +56,8 @@
                 <div class="absolute -top-6 -left-6 w-32 h-32 border-t-2 border-l-2 border-brand-gold/30"></div>
                 <div class="absolute -bottom-6 -right-6 w-32 h-32 border-b-2 border-r-2 border-brand-gold/30"></div>
                 <div class="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
-                    <img src="https://picsum.photos/seed/master-weaver-portrait/800/1000"
-                        alt="Portrait of a master weaver in golden hour light" class="w-full h-full object-cover"
-                        referrerPolicy="no-referrer" />
+                    <img src="assets/stiching.png" alt="Portrait of a master weaver in golden hour light"
+                        class="w-full h-full object-cover" referrerPolicy="no-referrer" />
                     <div class="absolute inset-0 bg-brand-gold/10 mix-blend-overlay"></div>
                 </div>
             </div>
@@ -66,18 +86,38 @@
 </section>
 
 <!-- ===================== PILLARS ===================== -->
-<div class="bg-brand-sand py-20 border-y border-brand-gold/20">
+<div class="bg-brand-sand py-24 border-y border-brand-gold/20">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+        <!-- Section heading -->
+        <div class="text-center mb-20">
+            <span class="text-brand-gold text-[9px] font-bold tracking-[0.5em] uppercase mb-4 block">
+                Why Al-Masrah
+            </span>
+            <h2 class="text-4xl md:text-5xl text-brand-charcoal font-normal leading-tight mb-6">
+                Built on <span class="italic text-brand-gold">Principles</span> That Never Fade
+            </h2>
+            <p class="text-brand-charcoal/60 text-base font-light leading-relaxed max-w-xl mx-auto">
+                Every piece we create is guided by a commitment to the earth, the artisan, and the
+                enduring beauty of heritage craftsmanship — values we have held since 1982.
+            </p>
+
+        </div>
+
+        <!-- Pillars grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
             @for (pillar of pillars; track pillar.title) {
-            <div class="flex flex-col items-center text-center">
-                <span class="material-symbols-outlined text-brand-gold text-4xl mb-6 font-light">{{ pillar.icon
-                    }}</span>
-                <h3 class="text-xl text-brand-charcoal mb-3 font-medium">{{ pillar.title }}</h3>
+            <div class="flex flex-col items-center text-center group">
+                <div
+                    class="w-16 h-16 rounded-full bg-brand-gold/10 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-brand-gold/20">
+                    <span class="material-symbols-outlined text-brand-gold text-3xl font-light">{{ pillar.icon }}</span>
+                </div>
+                <h3 class="text-xl text-brand-charcoal mb-3 font-medium tracking-wide">{{ pillar.title }}</h3>
                 <p class="text-brand-charcoal/60 text-sm leading-relaxed max-w-xs">{{ pillar.body }}</p>
             </div>
             }
         </div>
+
     </div>
 </div>
 
@@ -95,43 +135,115 @@
             <div class="w-16 h-px bg-brand-gold/30 mx-auto mt-8"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-20 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 md:gap-y-20 items-start">
             @for (stage of stages; track stage.num) {
-            <div class="group flex flex-col items-start text-left" [ngClass]="stage.offset">
-                <div class="relative w-full aspect-[4/5] overflow-hidden mb-10 arch-frame
-                      shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)]
-                      transition-all duration-700 hover:-translate-y-2">
-                    <img [src]="'https://picsum.photos/seed/' + stage.seed + '/600/750'" [alt]="stage.alt"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+
+            <!-- Mobile: plain image + text below. md+: immersive hover-overlay card -->
+            <div class="group" [ngClass]="stage.offset">
+
+                <!-- Image frame — on md+ becomes the full card -->
+                <div class="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-xl
+                             shadow-[0_12px_32px_-8px_rgba(0,0,0,0.12)]
+                             md:rounded-2xl md:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.15)]
+                             md:transition-all md:duration-700 md:hover:-translate-y-3 md:hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.22)]
+                             mb-4 md:mb-0">
+
+                    <img [src]="stage.seed" [alt]="stage.alt" class="absolute inset-0 w-full h-full object-cover
+                               transition-transform duration-1000 ease-out md:group-hover:scale-110"
                         referrerPolicy="no-referrer" />
+
+                    <!-- Vignette — lighter on mobile so image is more visible -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/50 via-transparent to-transparent
+                                md:from-brand-charcoal/80 md:via-brand-charcoal/10"></div>
+
+                    <!-- Overlay content panel — md+ only -->
+                    <div class="hidden md:block absolute inset-x-0 bottom-0 p-6
+                                 md:translate-y-2 md:group-hover:translate-y-0
+                                 md:transition-transform md:duration-500 md:ease-out
+                                 bg-gradient-to-t from-brand-charcoal/90 via-brand-charcoal/70 to-transparent
+                                 backdrop-blur-[2px]">
+                        <div class="flex items-start gap-3 mb-2">
+                            <span class="text-brand-gold text-sm font-medium tracking-[0.2em] leading-tight mt-0.5">{{
+                                stage.num }}</span>
+                            <h3 class="text-lg text-white font-medium tracking-wide leading-snug">{{ stage.title }}</h3>
+                        </div>
+                        <p class="text-white/60 text-xs font-light leading-relaxed
+                                   max-h-0 overflow-hidden opacity-0
+                                   group-hover:max-h-24 group-hover:opacity-100
+                                   transition-all duration-500 delay-100">
+                            {{ stage.body }}
+                        </p>
+                    </div>
                 </div>
-                <div class="space-y-4 px-1">
-                    <span class="text-brand-gold font-serif text-2xl italic block opacity-80">{{ stage.num }}</span>
-                    <h3 class="text-2xl text-brand-charcoal tracking-wide">{{ stage.title }}</h3>
+
+                <!-- Mobile-only text below the image -->
+                <div class="md:hidden px-1 space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="text-brand-gold text-xs font-medium tracking-[0.2em]">{{ stage.num }}</span>
+                        <div class="w-4 h-px bg-brand-gold/40"></div>
+                        <h3 class="text-base font-medium text-brand-charcoal tracking-wide">{{ stage.title }}</h3>
+                    </div>
                     <p class="text-brand-charcoal/60 text-sm font-light leading-relaxed">{{ stage.body }}</p>
                 </div>
+
             </div>
             }
         </div>
 
+
     </div>
 </section>
 
-<!-- ===================== QUOTE ===================== -->
-<section class="py-32 bg-brand-sand">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-        <div class="mb-12">
-            <span class="material-symbols-outlined text-5xl text-brand-gold/40">format_quote</span>
+<!-- ===================== FOUNDER'S NOTE ===================== -->
+<section class="py-32" style="background-color: #f6f0ea;">
+    <div class="max-w-3xl mx-auto px-6">
+
+        <!-- Section label -->
+        <div class="flex items-center gap-4 mb-16">
+            <div class="w-8 h-px bg-brand-gold"></div>
+            <span class="text-[9px] uppercase tracking-[0.5em] text-brand-gold font-medium">A Note From the
+                Founder</span>
         </div>
-        <p class="font-serif text-3xl md:text-5xl text-brand-charcoal/80 leading-snug mb-12 italic">
-            "Our pieces are designed to be a second skin, reflecting the warmth of our heritage and the timeless
-            elegance of the desert's golden hour."
-        </p>
-        <div class="inline-flex items-center space-x-4">
-            <div class="w-12 h-px bg-brand-gold"></div>
-            <p class="font-sans text-sm font-bold tracking-[0.3em] uppercase text-brand-charcoal">The Al-Masrah
-                Philosophy</p>
-            <div class="w-12 h-px bg-brand-gold"></div>
+
+        <!-- Letter card -->
+        <div class="relative rounded-sm
+                    border-l-2 border-brand-gold
+                    shadow-[0_4px_32px_-8px_rgba(36,32,28,0.06)]
+                    px-10 py-12 md:px-16 md:py-16" style="background-color: rgba(246,240,234,0.5);">
+
+            <!-- Large opening quote mark -->
+            <span
+                class="absolute -top-6 left-10 font-serif text-[120px] leading-none text-brand-gold/15 select-none">"</span>
+
+            <!-- Quote body -->
+            <p class="font-serif text-2xl md:text-3xl text-brand-charcoal/85 leading-[1.6] italic mb-12 relative z-10">
+                Our pieces are designed to be a second skin, reflecting the warmth of our heritage and the timeless
+                elegance of the desert's golden hour. Every thread carries a story — of the artisan's hands,
+                of the mountain winds, of a tradition we are honoured to preserve.
+            </p>
+
+            <!-- Signature row -->
+            <div class="flex items-end justify-between flex-wrap gap-8">
+                <div>
+                    <!-- Stylised signature text -->
+                    <p class="font-serif text-3xl italic text-brand-charcoal/60 mb-1">Yousuf Al-Masrah</p>
+                    <div class="w-20 h-px bg-brand-gold/50 mb-3"></div>
+                    <p class="text-[9px] uppercase tracking-[0.35em] text-brand-charcoal/40">Founder &amp; Master
+                        Curator</p>
+                    <p class="text-[9px] uppercase tracking-[0.35em] text-brand-charcoal/40">Al-Masrah Heritage, Est.
+                        1982</p>
+                </div>
+
+                <!-- Decorative seal -->
+                <div
+                    class="w-16 h-16 rounded-full border border-brand-gold/30 flex items-center justify-center flex-shrink-0">
+                    <div class="w-12 h-12 rounded-full border border-brand-gold/20 flex items-center justify-center">
+                        <span
+                            class="text-[9px] uppercase tracking-[0.2em] text-brand-gold/50 font-medium text-center leading-tight">AM<br />1982</span>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 </section>

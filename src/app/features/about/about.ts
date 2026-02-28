@@ -56,7 +56,7 @@ export class AboutComponent {
   readonly stages: Stage[] = [
     {
       num: '01',
-      seed: 'stage-clean-pashmina',
+      seed: 'assets/Pashmina-Goat-Combing.webp',
       alt: 'Cleaning and sorting raw pashmina fibers',
       title: 'Cleaning & Sorting',
       body: "The finest 'Pashm' is selected by hand, ensuring only the cloud-like undercoat remains for production.",
@@ -64,7 +64,7 @@ export class AboutComponent {
     },
     {
       num: '02',
-      seed: 'spinning-wheel-trad',
+      seed: 'assets/spinning.jpeg',
       alt: 'Traditional wooden spinning wheel',
       title: 'Artisanal Spinning',
       body: 'Traditional wooden wheels transform raw fiber into delicate, translucent threads with meditative precision.',
@@ -72,7 +72,7 @@ export class AboutComponent {
     },
     {
       num: '03',
-      seed: 'handloom-ancient',
+      seed: 'assets/weaving-5.webp',
       alt: 'Ancient handloom weaving fabric',
       title: 'Hand Weaving',
       body: 'On ancient handlooms, threads are intertwined into a breathable, ethereal fabric that feels like a second skin.',
@@ -80,7 +80,7 @@ export class AboutComponent {
     },
     {
       num: '04',
-      seed: 'embroidery-finish',
+      seed: 'assets/Pashmina-stitching-new.webp',
       alt: 'Detailed hand embroidery and finishing',
       title: 'Finishing Touches',
       body: 'Hand-embroidery and soft washing bring the final piece to life, ensuring it meets our standard of ethereal softness.',

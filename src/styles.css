@@ -21,8 +21,13 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply font-sans bg-brand-pearl text-brand-charcoal antialiased;
+    overflow-x: hidden;
   }
 
   h1,

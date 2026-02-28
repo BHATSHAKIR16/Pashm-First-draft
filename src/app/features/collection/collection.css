@@ -1,1 +1,76 @@
-/* All styles handled via global Tailwind utilities in styles.css */
+/* ── Hero Micro-animations ──────────────────────────────────── */
+
+@keyframes hero-zoom-out {
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1.00);
+    }
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes line-grow {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+/* Hero image slow ken-burns zoom-out */
+.hero-image {
+    animation: hero-zoom-out 8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Eyebrow divider lines grow from center */
+.hero-eyebrow-line {
+    transform-origin: center;
+    animation: line-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+/* Eyebrow label fades in just after lines appear */
+.hero-eyebrow-text {
+    animation: fade-in 0.7s ease-out 0.55s both;
+}
+
+/* Title slides up and fades in */
+.hero-title {
+    animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.75s both;
+}
+
+/* Subtitle follows with a slight delay */
+.hero-subtitle {
+    animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1s both;
+}
+
+/* Scroll cue fades in last */
+.hero-scroll-cue {
+    animation: fade-in 1s ease-out 1.4s both;
+}

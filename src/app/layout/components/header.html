@@ -1,39 +1,109 @@
-<header class="bg-brand-pearl/80 backdrop-blur-md sticky top-0 z-50 border-b border-brand-charcoal/5">
+<!-- ── Fixed header wrapper ─────────────────────────────────── -->
+<header class="fixed top-0 inset-x-0 z-50" [class.header-transparent]="!scrolled()"
+    [class.header-scrolled]="scrolled()">
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
+
+            <!-- Left nav (desktop) -->
             <nav class="hidden md:flex space-x-8 flex-1">
-                <a routerLink="/" routerLinkActive="text-brand-gold" [routerLinkActiveOptions]="{exact: true}"
-                    class="text-[10px] font-medium text-brand-charcoal/70 hover:text-brand-gold transition-colors uppercase tracking-[0.2em]">Home</a>
-                <a routerLink="/collection" routerLinkActive="text-brand-gold"
-                    class="text-[10px] font-medium text-brand-charcoal/70 hover:text-brand-gold transition-colors uppercase tracking-[0.2em]">Collection</a>
-                <a routerLink="/about" routerLinkActive="text-brand-gold"
-                    class="text-[10px] font-medium text-brand-charcoal/70 hover:text-brand-gold transition-colors uppercase tracking-[0.2em]">About</a>
+                <a routerLink="/" routerLinkActive="!opacity-100 !text-brand-gold"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    class="text-[11px] font-medium uppercase tracking-[0.25em] transition-colors duration-300"
+                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                    Home
+                </a>
+                <a routerLink="/collection" routerLinkActive="!opacity-100 !text-brand-gold"
+                    class="text-[11px] font-medium uppercase tracking-[0.25em] transition-colors duration-300"
+                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                    Collection
+                </a>
+                <a routerLink="/about" routerLinkActive="!opacity-100 !text-brand-gold"
+                    class="text-[11px] font-medium uppercase tracking-[0.25em] transition-colors duration-300"
+                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                    About
+                </a>
             </nav>
 
+            <!-- Centered wordmark -->
             <div class="flex-shrink-0 flex justify-center flex-1">
-                <a routerLink="/" class="flex items-center">
-                    <span class="text-2xl font-serif font-normal tracking-[0.3em] text-brand-charcoal">AL-MASRAH</span>
+                <a routerLink="/" class="flex items-center" (click)="closeMenu()">
+                    <span class="text-2xl font-serif font-normal tracking-[0.3em] transition-colors duration-300"
+                        [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                        Zargar-Shawls
+                    </span>
                 </a>
             </div>
 
-            <div class="flex items-center justify-end space-x-6 flex-1">
-                <button class="text-brand-charcoal/70 hover:text-brand-gold transition-colors">
-                    <mat-icon class="text-xl">search</mat-icon>
-                </button>
-                <button routerLink="/cart"
-                    class="relative text-brand-charcoal/70 hover:text-brand-gold transition-colors">
+            <!-- Right actions -->
+            <div class="flex items-center justify-end space-x-5 flex-1">
+                <!-- Cart -->
+                <button routerLink="/cart" class="relative transition-colors duration-300"
+                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
                     <mat-icon class="text-xl">shopping_bag</mat-icon>
                     @if (cart.totalItems() > 0) {
                     <span
-                        class="absolute -top-1 -right-1 bg-brand-gold text-white text-[8px] w-3.5 h-3.5 flex items-center justify-center rounded-full animate-in fade-in zoom-in duration-300">
+                        class="absolute -top-1 -right-1 bg-brand-gold text-white text-[8px] w-3.5 h-3.5 flex items-center justify-center rounded-full">
                         {{ cart.totalItems() }}
                     </span>
                     }
                 </button>
-                <button class="md:hidden text-brand-charcoal/70">
-                    <mat-icon>menu</mat-icon>
+
+                <!-- Hamburger (mobile only) -->
+                <button class="md:hidden transition-colors duration-300 p-1" [class.text-white]="!scrolled()"
+                    [class.text-brand-charcoal]="scrolled()" (click)="toggleMenu()"
+                    [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'">
+                    <mat-icon>{{ menuOpen() ? 'close' : 'menu' }}</mat-icon>
                 </button>
             </div>
+
         </div>
     </div>
+
+    <!-- ── Mobile drawer ──────────────────────────────────────── -->
+    <div class="mobile-drawer md:hidden overflow-hidden transition-all duration-400 ease-in-out"
+        [class.drawer-open]="menuOpen()" [class.drawer-closed]="!menuOpen()">
+
+        <nav class="bg-brand-pearl/95 backdrop-blur-md border-t border-brand-gold/10 px-6 py-8 space-y-1"
+            (click)="closeMenu()">
+
+            <a routerLink="/" routerLinkActive="text-brand-gold" [routerLinkActiveOptions]="{exact: true}" class="flex items-center gap-4 py-4 border-b border-brand-charcoal/5
+                      text-brand-charcoal hover:text-brand-gold transition-colors duration-300 group">
+                <div class="w-5 h-px bg-brand-gold/40 group-hover:w-8 transition-all duration-300"></div>
+                <span class="text-[11px] uppercase tracking-[0.35em] font-medium">Home</span>
+            </a>
+
+            <a routerLink="/collection" routerLinkActive="text-brand-gold" class="flex items-center gap-4 py-4 border-b border-brand-charcoal/5
+                      text-brand-charcoal hover:text-brand-gold transition-colors duration-300 group">
+                <div class="w-5 h-px bg-brand-gold/40 group-hover:w-8 transition-all duration-300"></div>
+                <span class="text-[11px] uppercase tracking-[0.35em] font-medium">Collection</span>
+            </a>
+
+            <a routerLink="/about" routerLinkActive="text-brand-gold" class="flex items-center gap-4 py-4 border-b border-brand-charcoal/5
+                      text-brand-charcoal hover:text-brand-gold transition-colors duration-300 group">
+                <div class="w-5 h-px bg-brand-gold/40 group-hover:w-8 transition-all duration-300"></div>
+                <span class="text-[11px] uppercase tracking-[0.35em] font-medium">About</span>
+            </a>
+
+            <a routerLink="/cart" class="flex items-center gap-4 py-4
+                      text-brand-charcoal hover:text-brand-gold transition-colors duration-300 group">
+                <div class="w-5 h-px bg-brand-gold/40 group-hover:w-8 transition-all duration-300"></div>
+                <span class="text-[11px] uppercase tracking-[0.35em] font-medium">Cart</span>
+                @if (cart.totalItems() > 0) {
+                <span
+                    class="bg-brand-gold text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full ml-1">
+                    {{ cart.totalItems() }}
+                </span>
+                }
+            </a>
+
+            <!-- Brand footer inside drawer -->
+            <div class="pt-8 mt-4 border-t border-brand-gold/10 text-center">
+                <p class="text-[8px] uppercase tracking-[0.4em] text-brand-charcoal/35">Al-Masrah Heritage · Est. 1982
+                </p>
+            </div>
+
+        </nav>
+    </div>
+
 </header>

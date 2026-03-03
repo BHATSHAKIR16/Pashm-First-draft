@@ -1,8 +1,10 @@
 <!-- Collection Hero -->
 <section class="relative w-full h-[80vh] overflow-hidden">
-    <!-- Background Image (Ken-Burns zoom-out) -->
+    <!-- LCP image: eager + high priority so browser fetches it immediately -->
     <img src="assets/Stacked-pashmina.png" alt="Al-Masrah Collection — Handwoven Pashminas"
-        class="hero-image absolute inset-0 w-full h-full object-cover object-center" />
+        class="hero-image absolute inset-0 w-full h-full object-cover object-center" loading="eager"
+        fetchpriority="high" width="1920" height="1080" />
+
 
     <!-- Multi-layer gradient overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-brand-charcoal/30 via-transparent to-brand-charcoal/70"></div>

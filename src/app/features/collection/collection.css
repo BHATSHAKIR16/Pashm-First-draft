@@ -74,3 +74,16 @@
 .hero-scroll-cue {
     animation: fade-in 1s ease-out 1.4s both;
 }
+
+/* Hide scrollbar on filter chip rows (mobile swipe stays, bar is hidden) */
+.filter-chips-row {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+.filter-chips-row::-webkit-scrollbar {
+    display: none;
+    /* Chrome / Safari */
+}

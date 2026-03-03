@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
     <!-- Video Background -->
     <div class="absolute inset-0 z-0">
         <video autoplay [muted]="true" playsinline preload="auto"
@@ -12,13 +12,13 @@
     </div>
 
     <div class="relative z-10 text-center px-4 max-w-5xl">
-        <div class="flex items-center justify-center gap-3 sm:gap-5 mb-8 animate-fade-in px-4">
+        <!-- <div class="flex items-center justify-center gap-3 sm:gap-5 mb-8 animate-fade-in px-4">
             <span class="hidden sm:block w-10 h-px bg-brand-gold/70 shrink-0"></span>
             <p
                 class="text-[10px] sm:text-[11px] uppercase tracking-[0.3em] sm:tracking-[0.45em] text-white italic drop-shadow-md text-center">
                 Authentic Middle Eastern Luxury</p>
             <span class="hidden sm:block w-10 h-px bg-brand-gold/70 shrink-0"></span>
-        </div>
+        </div> -->
         <h1
             class="text-5xl md:text-8xl font-serif italic mb-12 leading-tight text-white drop-shadow-sm animate-slide-up delay-400">
             Timeless Pashmina.<br>
@@ -32,8 +32,21 @@
 </section>
 
 <!-- Trust Strip -->
-<section class="py-14 bg-brand-sand/30 border-y border-brand-gold/10">
+<section class="py-20 bg-brand-sand/30 border-y border-brand-gold/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section Header -->
+        <div class="text-center mb-14">
+            <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-3">The Al-Masrah Promise</p>
+            <h2 class="text-3xl md:text-4xl font-serif italic text-brand-charcoal mb-4">
+                Every Thread, a Guarantee
+            </h2>
+            <div class="w-16 h-px bg-brand-gold/40 mx-auto mb-4"></div>
+            <p class="text-xs text-brand-charcoal/55 max-w-sm mx-auto leading-relaxed font-sans">
+                Four pillars that have guided us since 1982 — from the valley to your hands.
+            </p>
+        </div>
+
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
 
             <div class="flex flex-col items-center text-center gap-4 group">
@@ -43,9 +56,15 @@
                         style="font-size: 22px; width: 22px; height: 22px; line-height: 22px;">pan_tool</mat-icon>
                 </div>
                 <div class="w-4 h-px bg-brand-gold/40"></div>
-                <span
-                    class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal/70 font-medium leading-relaxed max-w-[100px]">Handwoven
-                    Craftsmanship</span>
+                <div>
+                    <p
+                        class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal font-semibold leading-relaxed max-w-[110px] mx-auto mb-1">
+                        Handwoven Craftsmanship
+                    </p>
+                    <p class="text-[9px] text-brand-charcoal/50 leading-relaxed max-w-[110px] mx-auto hidden sm:block">
+                        Centuries of artisanal skill in every weave
+                    </p>
+                </div>
             </div>
 
             <div class="flex flex-col items-center text-center gap-4 group">
@@ -55,9 +74,15 @@
                         style="font-size: 22px; width: 22px; height: 22px; line-height: 22px;">eco</mat-icon>
                 </div>
                 <div class="w-4 h-px bg-brand-gold/40"></div>
-                <span
-                    class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal/70 font-medium leading-relaxed max-w-[100px]">Ethical
-                    Sourcing</span>
+                <div>
+                    <p
+                        class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal font-semibold leading-relaxed max-w-[110px] mx-auto mb-1">
+                        Ethical Sourcing
+                    </p>
+                    <p class="text-[9px] text-brand-charcoal/50 leading-relaxed max-w-[110px] mx-auto hidden sm:block">
+                        Cruelty-free & in harmony with nature
+                    </p>
+                </div>
             </div>
 
             <div class="flex flex-col items-center text-center gap-4 group">
@@ -67,9 +92,15 @@
                         style="font-size: 22px; width: 22px; height: 22px; line-height: 22px;">cloud</mat-icon>
                 </div>
                 <div class="w-4 h-px bg-brand-gold/40"></div>
-                <span
-                    class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal/70 font-medium leading-relaxed max-w-[100px]">Premium
-                    Softness</span>
+                <div>
+                    <p
+                        class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal font-semibold leading-relaxed max-w-[110px] mx-auto mb-1">
+                        Premium Softness
+                    </p>
+                    <p class="text-[9px] text-brand-charcoal/50 leading-relaxed max-w-[110px] mx-auto hidden sm:block">
+                        Pure pashm — feather-light, cloud-soft
+                    </p>
+                </div>
             </div>
 
             <div class="flex flex-col items-center text-center gap-4 group">
@@ -79,9 +110,15 @@
                         style="font-size: 22px; width: 22px; height: 22px; line-height: 22px;">verified</mat-icon>
                 </div>
                 <div class="w-4 h-px bg-brand-gold/40"></div>
-                <span
-                    class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal/70 font-medium leading-relaxed max-w-[120px]">Trusted
-                    by Middle East Wholesalers</span>
+                <div>
+                    <p
+                        class="text-[9px] uppercase tracking-[0.3em] text-brand-charcoal font-semibold leading-relaxed max-w-[120px] mx-auto mb-1">
+                        Trusted Wholesale Partner
+                    </p>
+                    <p class="text-[9px] text-brand-charcoal/50 leading-relaxed max-w-[110px] mx-auto hidden sm:block">
+                        Preferred by boutiques across the Middle East
+                    </p>
+                </div>
             </div>
 
         </div>
@@ -89,18 +126,40 @@
 </section>
 
 <!-- Featured Collection -->
-<section class="py-32 bg-white">
+<section class="py-20 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-20">
-            <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-4">Our Heritage Gallery</p>
-            <div class="w-24 h-px bg-brand-gold/30 mx-auto mb-8"></div>
-            <h2 class="text-4xl md:text-5xl font-serif italic">Curated Masterpieces</h2>
+
+        <!-- Header row with desktop nav arrows -->
+        <div class="flex items-end justify-between mb-12">
+            <div class="text-center flex-1">
+                <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-4">Our Heritage Gallery</p>
+                <div class="w-24 h-px bg-brand-gold/30 mx-auto mb-5"></div>
+                <h2 class="text-4xl md:text-5xl font-serif italic">Curated Masterpieces</h2>
+            </div>
+            <!-- Desktop-only arrow controls -->
+            <div class="hidden md:flex items-center gap-3 shrink-0 pb-1">
+                <button (click)="scrollCarousel('prev')" aria-label="Scroll to previous products" class="w-11 h-11 rounded-full border border-brand-gold/30 flex items-center justify-center
+                           text-brand-charcoal/50 hover:border-brand-gold hover:text-brand-gold
+                           transition-all duration-300 group">
+                    <mat-icon style="font-size:18px;width:18px;height:18px;line-height:18px;">arrow_back</mat-icon>
+                </button>
+                <button (click)="scrollCarousel('next')" aria-label="Scroll to next products" class="w-11 h-11 rounded-full border border-brand-gold/30 flex items-center justify-center
+                           text-brand-charcoal/50 hover:border-brand-gold hover:text-brand-gold
+                           transition-all duration-300 group">
+                    <mat-icon style="font-size:18px;width:18px;height:18px;line-height:18px;">arrow_forward</mat-icon>
+                </button>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <!-- Scroll track — snap on mobile, flex row always -->
+        <div #carouselTrack class="carousel-track flex gap-8 overflow-x-auto pb-4
+                    snap-x snap-mandatory scroll-smooth
+                    md:overflow-x-hidden">
             @for (product of featuredProducts(); track product.id) {
-            <div class="group cursor-pointer" [routerLink]="['/product', product.slug]">
-                <div class="relative aspect-[3/4] overflow-hidden mb-8 product-frame">
+            <div class="group cursor-pointer shrink-0
+                        w-[60vw] sm:w-[45vw] md:w-[calc(33.333%-2rem)]
+                        snap-start" [routerLink]="['/product', product.slug]">
+                <div class="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden mb-4 md:mb-8 product-frame">
                     <img [src]="product.images[0]" [alt]="product.name"
                         class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                         referrerPolicy="no-referrer" />
@@ -121,6 +180,14 @@
             </div>
             }
         </div>
+
+        <!-- Mobile scroll hint dots -->
+        <div class="flex justify-center gap-2 mt-8 md:hidden">
+            @for (product of featuredProducts(); track product.id; let i = $index) {
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold/30 first:bg-brand-gold"></span>
+            }
+        </div>
+
     </div>
 </section>
 

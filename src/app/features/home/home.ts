@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -17,12 +17,14 @@ import { map } from 'rxjs/operators';
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   private seo = inject(SeoService);
   private productService = inject(ProductService);
   private fb = inject(FormBuilder);
 
   featuredProducts = toSignal(this.productService.getFeaturedProducts());
+
+  @ViewChild('carouselTrack') carouselTrack!: ElementRef<HTMLElement>;
 
   activeTestimonial = signal(0);
   testimonials = [
@@ -66,6 +68,19 @@ export class HomeComponent implements OnInit {
     interval(6000).pipe(
       map(() => (this.activeTestimonial() + 1) % this.testimonials.length)
     ).subscribe(next => this.activeTestimonial.set(next));
+  }
+
+  scrollCarousel(dir: 'prev' | 'next'): void {
+    const track = this.carouselTrack?.nativeElement;
+    if (!track) return;
+    const card = track.firstElementChild as HTMLElement | null;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const scrollAmount = (card?.offsetWidth ?? 320) + gap;
+    track.scrollBy({ left: dir === 'next' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+  }
+
+  ngAfterViewInit(): void {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
 
   onNewsletterSubmit() {

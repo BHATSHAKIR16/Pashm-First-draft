@@ -1,1 +1,14 @@
 /* All styles handled via global Tailwind utilities in styles.css */
+
+/* Featured carousel — hide scrollbar cross-browser */
+.carousel-track {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE / Edge */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+    /* Chrome / Safari */
+}

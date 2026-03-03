@@ -3,9 +3,11 @@ import {
   Component,
   HostListener,
   OnInit,
+  PLATFORM_ID,
   inject,
   signal,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { filter } from 'rxjs/operators';
@@ -24,6 +26,8 @@ const DARK_HERO_ROUTES = ['/', '/collection', '/about'];
 export class HeaderComponent implements OnInit {
   cart = inject(CartService);
   private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
 
   /** True once the user scrolls past ~80px, OR when on a light-background page */
   scrolled = signal(false);
@@ -32,7 +36,7 @@ export class HeaderComponent implements OnInit {
   menuOpen = signal(false);
 
   ngOnInit() {
-    // Set initial state based on current route (handles direct navigation / refresh)
+    // Set initial state based on current route
     this.updateScrolledForRoute(this.router.url);
 
     // Update on every route change
@@ -46,11 +50,11 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onScroll() {
+    if (!this.isBrowser) return;
     const onHeroPage = DARK_HERO_ROUTES.includes(this.getCurrentBasePath());
     if (onHeroPage) {
       this.scrolled.set(window.scrollY > 80);
     }
-    // On light pages scrolled stays true — no change needed
   }
 
   toggleMenu() {
@@ -64,9 +68,8 @@ export class HeaderComponent implements OnInit {
   private updateScrolledForRoute(url: string) {
     const basePath = url.split('?')[0].split('#')[0];
     const isHeroPage = DARK_HERO_ROUTES.includes(basePath);
-    // Hero pages: transparent at top (scroll listener handles it)
-    // Light pages: always show frosted glass
-    this.scrolled.set(!isHeroPage || window.scrollY > 80);
+    const scrollY = this.isBrowser ? window.scrollY : 0;
+    this.scrolled.set(!isHeroPage || scrollY > 80);
   }
 
   private getCurrentBasePath(): string {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { SeoService } from '../../core/services/seo';
 
@@ -25,7 +25,7 @@ interface Stage {
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class AboutComponent {
+export class AboutComponent implements AfterViewInit {
   private readonly seo = inject(SeoService);
 
   constructor() {
@@ -33,6 +33,10 @@ export class AboutComponent {
     this.seo.updateMetaTags([
       { name: 'description', content: 'Since 1982, Al-Masrah has been weaving stories of heritage and elegance. Discover the four stages of softness and the artisans behind every piece.' },
     ]);
+  }
+
+  ngAfterViewInit(): void {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
 
   readonly pillars: Pillar[] = [

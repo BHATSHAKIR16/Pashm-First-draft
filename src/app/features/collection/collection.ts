@@ -48,6 +48,7 @@ export class CollectionComponent implements OnInit {
     this.seo.updateMetaTags([
       { name: 'description', content: 'Explore our curated collection of premium pashminas, crafted with heritage and elegance.' }
     ]);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
 
   updateFilter(key: keyof ProductFilters, value: string | null) {

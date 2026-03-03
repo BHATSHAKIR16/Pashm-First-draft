@@ -1,5 +1,5 @@
-<!-- ── Fixed header wrapper ─────────────────────────────────── -->
-<header class="fixed top-0 inset-x-0 z-50" [class.header-transparent]="!scrolled()"
+<!-- ── Header ─────────────────────────────────── -->
+<header class="fixed top-0 left-0 right-0 z-50" [class.header-transparent]="!scrolled()"
     [class.header-scrolled]="scrolled()">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,18 +9,15 @@
             <nav class="hidden md:flex space-x-8 flex-1">
                 <a routerLink="/" routerLinkActive="!opacity-100 !text-brand-gold"
                     [routerLinkActiveOptions]="{exact: true}"
-                    class="text-[11px] font-medium uppercase tracking-[0.25em] transition-colors duration-300"
-                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                    class="text-[11px] font-medium uppercase tracking-[0.25em] text-brand-charcoal hover:text-brand-gold transition-colors duration-300">
                     Home
                 </a>
                 <a routerLink="/collection" routerLinkActive="!opacity-100 !text-brand-gold"
-                    class="text-[11px] font-medium uppercase tracking-[0.25em] transition-colors duration-300"
-                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                    class="text-[11px] font-medium uppercase tracking-[0.25em] text-brand-charcoal hover:text-brand-gold transition-colors duration-300">
                     Collection
                 </a>
                 <a routerLink="/about" routerLinkActive="!opacity-100 !text-brand-gold"
-                    class="text-[11px] font-medium uppercase tracking-[0.25em] transition-colors duration-300"
-                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                    class="text-[11px] font-medium uppercase tracking-[0.25em] text-brand-charcoal hover:text-brand-gold transition-colors duration-300">
                     About
                 </a>
             </nav>
@@ -28,8 +25,8 @@
             <!-- Centered wordmark -->
             <div class="flex-shrink-0 flex justify-center flex-1">
                 <a routerLink="/" class="flex items-center" (click)="closeMenu()">
-                    <span class="text-2xl font-serif font-normal tracking-[0.3em] transition-colors duration-300"
-                        [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                    <span
+                        class="text-2xl font-serif font-normal tracking-[0.3em] text-brand-charcoal transition-colors duration-300">
                         Al-Masrah
                     </span>
                 </a>
@@ -38,8 +35,8 @@
             <!-- Right actions -->
             <div class="flex items-center justify-end space-x-5 flex-1">
                 <!-- Cart -->
-                <button routerLink="/cart" class="relative transition-colors duration-300"
-                    [class.text-white]="!scrolled()" [class.text-brand-charcoal]="scrolled()">
+                <button routerLink="/cart"
+                    class="relative text-brand-charcoal hover:text-brand-gold transition-colors duration-300">
                     <mat-icon class="text-xl">shopping_bag</mat-icon>
                     @if (cart.totalItems() > 0) {
                     <span
@@ -50,9 +47,8 @@
                 </button>
 
                 <!-- Hamburger (mobile only) -->
-                <button class="md:hidden transition-colors duration-300 p-1" [class.text-white]="!scrolled()"
-                    [class.text-brand-charcoal]="scrolled()" (click)="toggleMenu()"
-                    [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'">
+                <button class="md:hidden text-brand-charcoal hover:text-brand-gold transition-colors duration-300 p-1"
+                    (click)="toggleMenu()" [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'">
                     <mat-icon>{{ menuOpen() ? 'close' : 'menu' }}</mat-icon>
                 </button>
             </div>
@@ -64,8 +60,7 @@
     <div class="mobile-drawer md:hidden overflow-hidden transition-all duration-400 ease-in-out"
         [class.drawer-open]="menuOpen()" [class.drawer-closed]="!menuOpen()">
 
-        <nav class="bg-brand-pearl/95 backdrop-blur-md border-t border-brand-gold/10 px-6 py-8 space-y-1"
-            (click)="closeMenu()">
+        <nav class="px-6 py-6 space-y-1" (click)="closeMenu()">
 
             <a routerLink="/" routerLinkActive="text-brand-gold" [routerLinkActiveOptions]="{exact: true}" class="flex items-center gap-4 py-4 border-b border-brand-charcoal/5
                       text-brand-charcoal hover:text-brand-gold transition-colors duration-300 group">

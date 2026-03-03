@@ -196,33 +196,90 @@
 </section>
 
 <!-- Craft Story -->
-<section class="py-32 bg-brand-sand/10 overflow-hidden">
+<section class="py-20 lg:py-32 bg-brand-sand/10 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div class="relative aspect-[4/5] product-frame overflow-hidden animate-on-scroll">
-                <img src="assets/weaver.avif" alt="Master artisan weaving pashmina in the valley"
-                    class="w-full h-full object-cover" loading="lazy" decoding="async" />
-            </div>
-            <div class="space-y-12 animate-on-scroll">
-                <div class="flex items-center gap-4">
-                    <mat-icon class="text-brand-gold/40">format_quote</mat-icon>
-                    <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold">Our Heritage</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+
+            <!-- TEXT: first in DOM → renders first on mobile -->
+            <div class="space-y-8 animate-on-scroll lg:order-2">
+
+                <!-- Eyebrow -->
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-px bg-brand-gold/50"></span>
+                    <p class="text-[10px] uppercase tracking-[0.35em] text-brand-gold">Our Heritage</p>
                 </div>
-                <h2 class="text-5xl md:text-6xl font-serif italic leading-tight">Woven in the Valley,<br>Worn by the
-                    World</h2>
-                <div class="space-y-6 text-brand-charcoal/70 leading-relaxed font-sans max-w-lg">
-                    <p>In the heart of the ancient valleys, our master artisans breathe life into every thread. Using
-                        techniques preserved for centuries, we create pashminas that are not just accessories, but
-                        heirlooms.</p>
-                    <p>We blend this timeless tradition with modern aesthetics, ensuring each piece resonates with the
-                        sophisticated tastes of the Middle East.</p>
+
+                <!-- Heading -->
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif italic leading-tight">
+                    Woven in the Valley,<br>
+                    <span class="text-brand-gold/80">Worn by the World</span>
+                </h2>
+
+                <!-- Body -->
+                <div class="space-y-4 text-brand-charcoal/65 leading-relaxed font-sans text-sm max-w-md">
+                    <p>In the heart of ancient valleys, master artisans breathe life into every thread. Using techniques
+                        preserved across centuries, each pashmina is not merely an accessory — it is an heirloom.</p>
+                    <p>We fuse this timeless tradition with modern aesthetics, crafting pieces that resonate with the
+                        refined tastes of a global clientele.</p>
                 </div>
-                <button class="btn-outline border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white">Read
-                    Our Story</button>
+
+                <!-- Stat row -->
+                <div class="flex items-center gap-8 pt-2 border-t border-brand-charcoal/8">
+                    <div>
+                        <p class="text-2xl font-sans italic text-brand-gold">40+</p>
+                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">Years of craft</p>
+                    </div>
+                    <div class="w-px h-8 bg-brand-charcoal/10"></div>
+                    <div>
+                        <p class="text-2xl font-sans italic text-brand-gold">200+</p>
+                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">Artisan families
+                        </p>
+                    </div>
+                    <div class="w-px h-8 bg-brand-charcoal/10"></div>
+                    <div>
+                        <p class="text-2xl font-sans italic text-brand-gold">100%</p>
+                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">Pure pashmina</p>
+                    </div>
+                </div>
+
+                <a routerLink="/about"
+                    class="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-brand-gold border-b border-brand-gold/30 pb-0.5 hover:border-brand-gold transition-colors">
+                    Read our story <mat-icon class="text-sm">arrow_forward</mat-icon>
+                </a>
             </div>
+
+            <!-- IMAGE: second in DOM → renders below text on mobile -->
+            <div class="relative animate-on-scroll lg:order-1">
+                <!-- Decorative offset gold border (desktop only) -->
+                <div class="hidden lg:block absolute -left-4 -top-4 w-full h-full border border-brand-gold/20 z-0">
+                </div>
+
+                <!-- Constrained image frame -->
+                <div
+                    class="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[5/6] max-w-sm mx-auto lg:max-w-none overflow-hidden product-frame z-10">
+                    <img src="assets/weaver.avif" alt="Master artisan weaving pashmina in the valley"
+                        class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                        loading="lazy" decoding="async" />
+                    <!-- Subtle vignette -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/20 via-transparent to-transparent pointer-events-none">
+                    </div>
+                </div>
+
+                <!-- Floating quote card (desktop only) -->
+                <div
+                    class="hidden lg:flex absolute -bottom-6 -right-6 bg-white shadow-xl p-5 max-w-[180px] z-20 flex-col gap-2">
+                    <mat-icon class="text-brand-gold/60 text-lg">format_quote</mat-icon>
+                    <p class="text-[10px] font-serif italic text-brand-charcoal/70 leading-relaxed">
+                        "Each thread carries the memory of the mountains."
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
+
 
 <!-- Testimonials -->
 <section class="py-32 bg-white">

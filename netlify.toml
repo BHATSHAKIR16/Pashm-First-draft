@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = "dist/app/browser"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ."
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Disable the Angular SSR runtime plugin — we are deploying as a static SPA
+[[plugins]]
+  package = "@netlify/angular-runtime"
+  [plugins.inputs]
+    ssr = false
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

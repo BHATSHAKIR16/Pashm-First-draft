@@ -10,21 +10,18 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "app": {
+    "customer-app": {
       "projectType": "application",
       "schematics": {},
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/customer-app",
+      "sourceRoot": "projects/customer-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "define": {
-              "GEMINI_API_KEY": "'YOUR_GEMINI_API_KEY'"
-            },
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
+            "browser": "projects/customer-app/src/main.ts",
+            "tsConfig": "projects/customer-app/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
@@ -32,18 +29,24 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/assets",
+                "input": "projects/customer-app/src/assets",
                 "output": "assets"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "projects/customer-app/src/styles.css"
             ],
-            "server": "src/main.server.ts",
+            "server": "projects/customer-app/src/main.server.ts",
             "outputMode": "static"
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/customer-app/src/environments/environment.ts",
+                  "with": "projects/customer-app/src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -70,10 +73,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app:build:production"
+              "buildTarget": "customer-app:build:production"
             },
             "development": {
-              "buildTarget": "app:build:development"
+              "buildTarget": "customer-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,8 +88,87 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
+              "projects/customer-app/src/**/*.ts",
+              "projects/customer-app/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "dashboard": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/dashboard",
+      "sourceRoot": "projects/dashboard/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/dashboard/src/main.ts",
+            "tsConfig": "projects/dashboard/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "projects/dashboard/src/styles.scss"
+            ],
+            "outputMode": "static"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/dashboard/src/environments/environment.ts",
+                  "with": "projects/dashboard/src/environments/environment.prod.ts"
+                }
+              ],
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dashboard:build:production"
+            },
+            "development": {
+              "buildTarget": "dashboard:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/dashboard/src/**/*.ts",
+              "projects/dashboard/src/**/*.html"
             ]
           }
         }

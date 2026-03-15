@@ -1,0 +1,93 @@
+{
+    "nav": {
+        "home": "Ana Sayfa",
+        "about": "Hakkımızda",
+        "products": "Ürünler",
+        "cart": "Sepet",
+        "login": "Giriş Yap",
+        "signup": "Kayıt Ol",
+        "account": "Hesabım",
+        "logout": "Çıkış Yap"
+    },
+    "product": {
+        "addToCart": "Sepete Ekle",
+        "outOfStock": "Stokta Yok",
+        "price": "Fiyat",
+        "details": "Detaylar",
+        "relatedProducts": "İlgili Ürünler",
+        "reviews": "Yorumlar",
+        "inStock": "Stokta Var"
+    },
+    "cart": {
+        "title": "Sepetiniz",
+        "empty": "Sepetiniz boş",
+        "total": "Toplam",
+        "subtotal": "Ara Toplam",
+        "checkout": "Ödemeye Geç",
+        "remove": "Kaldır",
+        "continueShopping": "Alışverişe Devam Et"
+    },
+    "checkout": {
+        "title": "Ödeme",
+        "placeOrder": "Siparişi Ver",
+        "orderSummary": "Sipariş Özeti",
+        "shippingAddress": "Teslimat Adresi",
+        "paymentDetails": "Ödeme Bilgileri",
+        "firstName": "Ad",
+        "lastName": "Soyad",
+        "address": "Adres",
+        "city": "Şehir",
+        "country": "Ülke",
+        "postalCode": "Posta Kodu"
+    },
+    "auth": {
+        "login": "Giriş Yap",
+        "signup": "Kayıt Ol",
+        "logout": "Çıkış Yap",
+        "email": "E-posta",
+        "password": "Şifre",
+        "confirmPassword": "Şifreyi Onayla",
+        "forgotPassword": "Şifremi Unuttum?",
+        "resetPassword": "Şifreyi Sıfırla",
+        "resetPasswordSent": "Sıfırlama bağlantısı e-postanıza gönderildi",
+        "noAccount": "Hesabınız yok mu?",
+        "hasAccount": "Zaten hesabınız var mı?",
+        "loginSuccess": "Tekrar hoş geldiniz!",
+        "signupSuccess": "Hesap başarıyla oluşturuldu"
+    },
+    "account": {
+        "profile": "Profil",
+        "orders": "Siparişlerim",
+        "addresses": "Adresler",
+        "settings": "Ayarlar",
+        "orderHistory": "Sipariş Geçmişi",
+        "orderNumber": "Sipariş Numarası",
+        "orderDate": "Sipariş Tarihi",
+        "orderStatus": "Durum",
+        "orderTotal": "Toplam"
+    },
+    "errors": {
+        "generic": "Bir şeyler yanlış gitti",
+        "notFound": "Sayfa bulunamadı",
+        "unauthorized": "Devam etmek için giriş yapın",
+        "paymentFailed": "Ödeme başarısız. Lütfen tekrar deneyin.",
+        "invalidEmail": "Lütfen geçerli bir e-posta girin",
+        "requiredField": "Bu alan zorunludur",
+        "passwordMismatch": "Şifreler eşleşmiyor",
+        "weakPassword": "Şifre en az 8 karakter olmalıdır"
+    },
+    "common": {
+        "loading": "Yükleniyor...",
+        "save": "Kaydet",
+        "cancel": "İptal",
+        "back": "Geri",
+        "next": "İleri",
+        "submit": "Gönder",
+        "close": "Kapat",
+        "search": "Ara",
+        "noResults": "Sonuç bulunamadı",
+        "viewAll": "Tümünü Gör",
+        "learnMore": "Daha Fazla",
+        "currency": "USD"
+    }
+}

@@ -1,0 +1,93 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "Over ons",
+        "products": "Producten",
+        "cart": "Winkelwagen",
+        "login": "Inloggen",
+        "signup": "Registreren",
+        "account": "Mijn account",
+        "logout": "Uitloggen"
+    },
+    "product": {
+        "addToCart": "Toevoegen aan winkelwagen",
+        "outOfStock": "Niet op voorraad",
+        "price": "Prijs",
+        "details": "Details",
+        "relatedProducts": "Gerelateerde producten",
+        "reviews": "Beoordelingen",
+        "inStock": "Op voorraad"
+    },
+    "cart": {
+        "title": "Uw winkelwagen",
+        "empty": "Uw winkelwagen is leeg",
+        "total": "Totaal",
+        "subtotal": "Subtotaal",
+        "checkout": "Afrekenen",
+        "remove": "Verwijderen",
+        "continueShopping": "Verder winkelen"
+    },
+    "checkout": {
+        "title": "Afrekenen",
+        "placeOrder": "Bestelling plaatsen",
+        "orderSummary": "Besteloverzicht",
+        "shippingAddress": "Verzendadres",
+        "paymentDetails": "Betalingsgegevens",
+        "firstName": "Voornaam",
+        "lastName": "Achternaam",
+        "address": "Adres",
+        "city": "Stad",
+        "country": "Land",
+        "postalCode": "Postcode"
+    },
+    "auth": {
+        "login": "Inloggen",
+        "signup": "Registreren",
+        "logout": "Uitloggen",
+        "email": "E-mail",
+        "password": "Wachtwoord",
+        "confirmPassword": "Wachtwoord bevestigen",
+        "forgotPassword": "Wachtwoord vergeten?",
+        "resetPassword": "Wachtwoord opnieuw instellen",
+        "resetPasswordSent": "Resetlink verzonden naar uw e-mail",
+        "noAccount": "Nog geen account?",
+        "hasAccount": "Al een account?",
+        "loginSuccess": "Welkom terug!",
+        "signupSuccess": "Account succesvol aangemaakt"
+    },
+    "account": {
+        "profile": "Profiel",
+        "orders": "Mijn bestellingen",
+        "addresses": "Adressen",
+        "settings": "Instellingen",
+        "orderHistory": "Bestelgeschiedenis",
+        "orderNumber": "Bestelnummer",
+        "orderDate": "Besteldatum",
+        "orderStatus": "Status",
+        "orderTotal": "Totaal"
+    },
+    "errors": {
+        "generic": "Er is iets misgegaan",
+        "notFound": "Pagina niet gevonden",
+        "unauthorized": "Log in om door te gaan",
+        "paymentFailed": "Betaling mislukt. Probeer het opnieuw.",
+        "invalidEmail": "Voer een geldig e-mailadres in",
+        "requiredField": "Dit veld is verplicht",
+        "passwordMismatch": "Wachtwoorden komen niet overeen",
+        "weakPassword": "Wachtwoord moet minimaal 8 tekens bevatten"
+    },
+    "common": {
+        "loading": "Laden...",
+        "save": "Opslaan",
+        "cancel": "Annuleren",
+        "back": "Terug",
+        "next": "Volgende",
+        "submit": "Verzenden",
+        "close": "Sluiten",
+        "search": "Zoeken",
+        "noResults": "Geen resultaten gevonden",
+        "viewAll": "Alles bekijken",
+        "learnMore": "Meer weten",
+        "currency": "EUR"
+    }
+}

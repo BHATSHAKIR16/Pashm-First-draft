@@ -1,0 +1,93 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "Chi siamo",
+        "products": "Prodotti",
+        "cart": "Carrello",
+        "login": "Accedi",
+        "signup": "Registrati",
+        "account": "Il mio account",
+        "logout": "Esci"
+    },
+    "product": {
+        "addToCart": "Aggiungi al carrello",
+        "outOfStock": "Esaurito",
+        "price": "Prezzo",
+        "details": "Dettagli",
+        "relatedProducts": "Prodotti correlati",
+        "reviews": "Recensioni",
+        "inStock": "Disponibile"
+    },
+    "cart": {
+        "title": "Il tuo carrello",
+        "empty": "Il carrello è vuoto",
+        "total": "Totale",
+        "subtotal": "Subtotale",
+        "checkout": "Procedi al pagamento",
+        "remove": "Rimuovi",
+        "continueShopping": "Continua gli acquisti"
+    },
+    "checkout": {
+        "title": "Pagamento",
+        "placeOrder": "Effettua l'ordine",
+        "orderSummary": "Riepilogo ordine",
+        "shippingAddress": "Indirizzo di spedizione",
+        "paymentDetails": "Dettagli di pagamento",
+        "firstName": "Nome",
+        "lastName": "Cognome",
+        "address": "Indirizzo",
+        "city": "Città",
+        "country": "Paese",
+        "postalCode": "Codice postale"
+    },
+    "auth": {
+        "login": "Accedi",
+        "signup": "Registrati",
+        "logout": "Esci",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Conferma password",
+        "forgotPassword": "Password dimenticata?",
+        "resetPassword": "Reimposta password",
+        "resetPasswordSent": "Link di reimpostazione inviato alla tua email",
+        "noAccount": "Non hai un account?",
+        "hasAccount": "Hai già un account?",
+        "loginSuccess": "Bentornato!",
+        "signupSuccess": "Account creato con successo"
+    },
+    "account": {
+        "profile": "Profilo",
+        "orders": "I miei ordini",
+        "addresses": "Indirizzi",
+        "settings": "Impostazioni",
+        "orderHistory": "Storico ordini",
+        "orderNumber": "Numero ordine",
+        "orderDate": "Data ordine",
+        "orderStatus": "Stato",
+        "orderTotal": "Totale"
+    },
+    "errors": {
+        "generic": "Qualcosa è andato storto",
+        "notFound": "Pagina non trovata",
+        "unauthorized": "Effettua il login per continuare",
+        "paymentFailed": "Pagamento fallito. Riprova.",
+        "invalidEmail": "Inserisci un'email valida",
+        "requiredField": "Questo campo è obbligatorio",
+        "passwordMismatch": "Le password non coincidono",
+        "weakPassword": "La password deve contenere almeno 8 caratteri"
+    },
+    "common": {
+        "loading": "Caricamento...",
+        "save": "Salva",
+        "cancel": "Annulla",
+        "back": "Indietro",
+        "next": "Avanti",
+        "submit": "Invia",
+        "close": "Chiudi",
+        "search": "Cerca",
+        "noResults": "Nessun risultato trovato",
+        "viewAll": "Vedi tutto",
+        "learnMore": "Scopri di più",
+        "currency": "EUR"
+    }
+}

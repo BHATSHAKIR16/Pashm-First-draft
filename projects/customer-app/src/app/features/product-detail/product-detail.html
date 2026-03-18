@@ -38,9 +38,10 @@
         <!-- Right: Product Info -->
         <div class="flex flex-col">
             <nav class="flex items-center gap-2 text-[10px] uppercase tracking-widest text-brand-charcoal/40 mb-8">
-                <a routerLink="/" class="hover:text-brand-gold transition-colors">Home</a>
+                <a [routerLink]="'/' | langLink" class="hover:text-brand-gold transition-colors">Home</a>
                 <mat-icon class="text-[10px]">chevron_right</mat-icon>
-                <a routerLink="/collection" class="hover:text-brand-gold transition-colors">Collection</a>
+                <a [routerLink]="'/collection' | langLink"
+                    class="hover:text-brand-gold transition-colors">Collection</a>
                 <mat-icon class="text-[10px]">chevron_right</mat-icon>
                 <span class="text-brand-charcoal">{{ p.name }}</span>
             </nav>
@@ -104,7 +105,7 @@
     } @else {
     <div class="text-center py-32">
         <h2 class="text-3xl font-serif mb-8">Product not found</h2>
-        <button routerLink="/collection" class="btn-primary">Back to Collection</button>
+        <button [routerLink]="'/collection' | langLink" class="btn-primary">Back to Collection</button>
     </div>
     }
 </div>

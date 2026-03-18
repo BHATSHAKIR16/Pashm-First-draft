@@ -10,8 +10,8 @@
             A confirmation email has been sent to your inbox.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <button routerLink="/collection" class="btn-primary">Continue Shopping</button>
-            <button routerLink="/" class="btn-outline">Return Home</button>
+            <button [routerLink]="'/collection' | langLink" class="btn-primary">Continue Shopping</button>
+            <button [routerLink]="'/' | langLink" class="btn-outline">Return Home</button>
         </div>
     </div>
     } @else {

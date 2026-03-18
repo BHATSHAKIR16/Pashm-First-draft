@@ -8,11 +8,12 @@ import { ProductService } from '../../core/services/product';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LangLinkPipe } from '../../core/pipes/lang-link.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, RouterLink, ReactiveFormsModule],
+  imports: [CommonModule, MatIconModule, RouterLink, ReactiveFormsModule, LangLinkPipe],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

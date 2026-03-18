@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CartService } from '../../core/services/cart';
 import { SeoService } from '../../core/services/seo';
+import { LangLinkPipe } from '../../core/pipes/lang-link.pipe';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatIconModule],
+  imports: [CommonModule, RouterLink, MatIconModule, LangLinkPipe],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

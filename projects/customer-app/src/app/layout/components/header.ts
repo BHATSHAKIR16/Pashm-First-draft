@@ -12,13 +12,14 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 import { MatIconModule } from '@angular/material/icon';
 import { filter } from 'rxjs/operators';
 import { CartService } from '../../core/services/cart';
+import { LangLinkPipe } from '../../core/pipes/lang-link.pipe';
 
 /** Routes that have a full-bleed dark hero — header starts transparent */
 const DARK_HERO_ROUTES = ['/', '/collection', '/about'];
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, MatIconModule],
+  imports: [RouterLink, RouterLinkActive, MatIconModule, LangLinkPipe],
   templateUrl: './header.html',
   styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

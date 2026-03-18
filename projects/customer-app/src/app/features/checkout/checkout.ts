@@ -7,11 +7,12 @@ import { CartService } from '../../core/services/cart';
 import { OrderService } from '../../core/services/order';
 import { SeoService } from '../../core/services/seo';
 import { Order } from '../../core/models/order';
+import { LangLinkPipe } from '../../core/pipes/lang-link.pipe';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, MatIconModule],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, MatIconModule, LangLinkPipe],
   templateUrl: './checkout.html',
   styleUrl: './checkout.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

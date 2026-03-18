@@ -9,11 +9,12 @@ import { Product } from '../../core/models/product';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { switchMap, tap, map } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
+import { LangLinkPipe } from '../../core/pipes/lang-link.pipe';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatIconModule],
+  imports: [CommonModule, RouterLink, MatIconModule, LangLinkPipe],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

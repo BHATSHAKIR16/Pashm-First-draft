@@ -4,7 +4,7 @@
         <mat-icon class="text-5xl text-brand-gold/40 mb-4">shopping_bag</mat-icon>
         <h2 class="text-2xl font-serif mb-4">Your bag is empty</h2>
         <p class="text-brand-charcoal/60 mb-8">Discover our latest collection and find your perfect piece.</p>
-        <button routerLink="/collection" class="btn-primary">Explore Collection</button>
+        <button [routerLink]="'/collection' | langLink" class="btn-primary">Explore Collection</button>
     </div>
     } @else {
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
@@ -78,7 +78,8 @@
                     </div>
                 </div>
 
-                <button routerLink="/checkout" class="w-full btn-primary mb-4">Proceed to Checkout</button>
+                <button [routerLink]="'/checkout' | langLink" class="w-full btn-primary mb-4">Proceed to
+                    Checkout</button>
                 <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40 text-center">
                     Secure payment powered by Al-Masrah
                 </p>

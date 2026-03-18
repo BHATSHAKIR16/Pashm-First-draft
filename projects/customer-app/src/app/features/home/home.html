@@ -30,7 +30,7 @@
         </h1>
 
         <div class="animate-slide-up animate-delay-600">
-            <button routerLink="/collection" class="btn-gold px-12 py-4">Explore Collection</button>
+            <button [routerLink]="'/collection' | langLink" class="btn-gold px-12 py-4">Explore Collection</button>
         </div>
     </div>
 </section>
@@ -162,7 +162,7 @@
             @for (product of featuredProducts(); track product.id) {
             <div class="group cursor-pointer shrink-0
                         w-[60vw] sm:w-[45vw] md:w-[calc(33.333%-2rem)]
-                        snap-start" [routerLink]="['/product', product.slug]">
+                        snap-start" [routerLink]="'/product/' + product.slug | langLink">
                 <div class="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden mb-4 md:mb-8 product-frame">
                     <img [src]="product.images[0]" [alt]="product.name"
                         class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -242,7 +242,7 @@
                     </div>
                 </div>
 
-                <a routerLink="/about"
+                <a [routerLink]="'/about' | langLink"
                     class="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-brand-gold border-b border-brand-gold/30 pb-0.5 hover:border-brand-gold transition-colors">
                     Read our story <mat-icon class="text-sm">arrow_forward</mat-icon>
                 </a>

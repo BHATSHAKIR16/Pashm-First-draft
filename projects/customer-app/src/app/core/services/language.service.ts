@@ -1,18 +1,18 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { computed, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 import { TranslocoService } from '@jsverse/transloco';
 import {
     DEFAULT_LANGUAGE,
     Language,
     RTL_LANGUAGES,
     SUPPORTED_LANGUAGES,
-    SupportedLang,
 } from '@lib/shared-models';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
     private readonly transloco = inject(TranslocoService);
     private readonly document = inject(DOCUMENT);
+    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
     // ── Signals ────────────────────────────────────────────────────────────────
 
@@ -57,8 +57,10 @@ export class LanguageService {
             RTL_LANGUAGES.includes(lang) ? 'rtl' : 'ltr'
         );
 
-        // 5. Persist preference so it survives page reloads
-        localStorage.setItem('preferred-lang', lang);
+        // 5. Persist preference — localStorage is browser-only, skip on SSR
+        if (this.isBrowser) {
+            localStorage.setItem('preferred-lang', lang);
+        }
     }
 
     /**
@@ -71,9 +73,10 @@ export class LanguageService {
             ? langFromUrl
             : null;
 
-        const fromStorage = localStorage.getItem('preferred-lang');
+        // localStorage is browser-only — returns null on the server
+        const stored = this.isBrowser ? localStorage.getItem('preferred-lang') : null;
         const fromStorageValid =
-            fromStorage && this.isValidLang(fromStorage) ? fromStorage : null;
+            stored && this.isValidLang(stored) ? stored : null;
 
         const resolved: string = fromUrl ?? fromStorageValid ?? DEFAULT_LANGUAGE;
         this.setLanguage(resolved);

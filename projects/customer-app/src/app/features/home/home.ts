@@ -9,11 +9,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LangLinkPipe } from '../../core/pipes/lang-link.pipe';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatIconModule, RouterLink, ReactiveFormsModule, LangLinkPipe],
+  imports: [CommonModule, MatIconModule, RouterLink, ReactiveFormsModule, LangLinkPipe, TranslocoModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

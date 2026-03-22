@@ -14,17 +14,17 @@
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
         <div class="flex items-center gap-4 mb-6">
             <div class="hero-eyebrow-line w-10 h-px bg-brand-gold/70"></div>
-            <p class="hero-eyebrow-text text-[9px] uppercase tracking-[0.5em] text-brand-gold font-medium">Timeless
-                Elegance</p>
+            <p class="hero-eyebrow-text text-[9px] uppercase tracking-[0.5em] text-brand-gold font-medium">{{
+                'collection.heroEyebrow' | transloco }}</p>
             <div class="hero-eyebrow-line w-10 h-px bg-brand-gold/70"></div>
         </div>
 
         <h1 class="hero-title text-4xl md:text-8xl font-serif italic text-white drop-shadow-lg leading-none mb-6">
-            Our Collection
+            {{ 'collection.heroTitle' | transloco }}
         </h1>
 
         <p class="hero-subtitle text-[10px] uppercase tracking-[0.4em] text-white/60 max-w-xs leading-relaxed">
-            Handwoven · Heritage · Luxury
+            {{ 'collection.heroSubtitle' | transloco }}
         </p>
     </div>
 
@@ -45,7 +45,7 @@
         <button (click)="toggleFilters()"
             class="flex items-center gap-2 text-[10px] uppercase tracking-widest hover:text-brand-gold transition-colors">
             <mat-icon class="text-sm">tune</mat-icon>
-            Filters
+            {{ 'collection.filters' | transloco }}
             @if (activeCount('fabric') + activeCount('color') > 0) {
             <span
                 class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-brand-gold text-white text-[8px] font-bold">
@@ -59,7 +59,7 @@
         <!-- Right: product count + Sort By -->
         <div class="flex items-center gap-5">
             <span class="hidden sm:inline text-[10px] uppercase tracking-widest text-brand-charcoal/40">
-                {{ products()?.length || 0 }} Products
+                {{ products()?.length || 0 }} {{ 'collection.products' | transloco }}
             </span>
 
             <!-- Sort: click-toggle so it works on touch -->
@@ -69,18 +69,20 @@
             <div class="relative z-50">
                 <button (click)="toggleSort()"
                     class="text-[10px] uppercase tracking-widest flex items-center gap-1.5 hover:text-brand-gold transition-colors">
-                    Sort By <mat-icon class="text-xs">{{ openSort() ? 'expand_less' : 'sort' }}</mat-icon>
+                    {{ 'collection.sortBy' | transloco }} <mat-icon class="text-xs">{{ openSort() ? 'expand_less' :
+                        'sort' }}</mat-icon>
                 </button>
                 @if (openSort()) {
                 <div class="absolute top-full right-0 mt-2 w-48 bg-white shadow-xl border border-brand-charcoal/5 z-50">
                     <button (click)="updateFilter('sort', 'newest'); closeSort()"
-                        class="w-full text-left px-4 py-2.5 text-[10px] uppercase tracking-widest hover:bg-brand-pearl">Newest</button>
+                        class="w-full text-left px-4 py-2.5 text-[10px] uppercase tracking-widest hover:bg-brand-pearl">{{
+                        'collection.sortNewest' | transloco }}</button>
                     <button (click)="updateFilter('sort', 'price_asc'); closeSort()"
-                        class="w-full text-left px-4 py-2.5 text-[10px] uppercase tracking-widest hover:bg-brand-pearl">Price:
-                        Low to High</button>
+                        class="w-full text-left px-4 py-2.5 text-[10px] uppercase tracking-widest hover:bg-brand-pearl">{{
+                        'collection.sortPriceLow' | transloco }}</button>
                     <button (click)="updateFilter('sort', 'price_desc'); closeSort()"
-                        class="w-full text-left px-4 py-2.5 text-[10px] uppercase tracking-widest hover:bg-brand-pearl">Price:
-                        High to Low</button>
+                        class="w-full text-left px-4 py-2.5 text-[10px] uppercase tracking-widest hover:bg-brand-pearl">{{
+                        'collection.sortPriceHigh' | transloco }}</button>
                 </div>
                 }
             </div>
@@ -94,7 +96,8 @@
     <!-- Fabric chips row -->
     <div class="border-t border-brand-charcoal/5 overflow-x-auto filter-chips-row">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-2 min-w-max sm:min-w-0">
-            <span class="text-[9px] uppercase tracking-[0.2em] text-brand-charcoal/40 shrink-0 w-10">Fabric</span>
+            <span class="text-[9px] uppercase tracking-[0.2em] text-brand-charcoal/40 shrink-0 w-10">{{
+                'collection.fabric' | transloco }}</span>
             @for (f of fabrics; track f) {
             <button (click)="toggleChip('fabric', f)"
                 class="px-3 py-1 text-[9px] uppercase tracking-widest border whitespace-nowrap transition-all"
@@ -110,7 +113,8 @@
     <!-- Color chips row -->
     <div class="border-t border-brand-charcoal/5 overflow-x-auto filter-chips-row">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-2 min-w-max sm:min-w-0">
-            <span class="text-[9px] uppercase tracking-[0.2em] text-brand-charcoal/40 shrink-0 w-10">Color</span>
+            <span class="text-[9px] uppercase tracking-[0.2em] text-brand-charcoal/40 shrink-0 w-10">{{
+                'collection.color' | transloco }}</span>
             @for (c of colors; track c) {
             <button (click)="toggleChip('color', c)"
                 class="px-3 py-1 text-[9px] uppercase tracking-widest border whitespace-nowrap transition-all"
@@ -128,7 +132,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
             <button (click)="clearAllFilters()"
                 class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 hover:text-red-400 transition-colors">
-                × Clear all filters
+                {{ 'collection.clearAllFilters' | transloco }}
             </button>
         </div>
     </div>
@@ -156,15 +160,15 @@
     } @else if (error()) {
     <div class="text-center py-20">
         <mat-icon class="text-5xl text-red-400 mb-4">error_outline</mat-icon>
-        <h2 class="text-2xl font-serif mb-4">Something went wrong</h2>
-        <button (click)="retry()" class="btn-outline">Try Again</button>
+        <h2 class="text-2xl font-serif mb-4">{{ 'collection.errorTitle' | transloco }}</h2>
+        <button (click)="retry()" class="btn-outline">{{ 'collection.tryAgain' | transloco }}</button>
     </div>
     } @else if (products()?.length === 0) {
     <div class="text-center py-20">
         <mat-icon class="text-5xl text-brand-gold/40 mb-4">search_off</mat-icon>
-        <h2 class="text-2xl font-serif mb-4">No products found</h2>
-        <p class="text-brand-charcoal/60 mb-8">Try adjusting your filters to find what you're looking for.</p>
-        <button (click)="clearAllFilters()" class="btn-outline">Clear All Filters</button>
+        <h2 class="text-2xl font-serif mb-4">{{ 'collection.noProductsTitle' | transloco }}</h2>
+        <p class="text-brand-charcoal/60 mb-8">{{ 'collection.noProductsSubtitle' | transloco }}</p>
+        <button (click)="clearAllFilters()" class="btn-outline">{{ 'collection.clearAll' | transloco }}</button>
     </div>
     } @else {
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-8 sm:gap-y-16">

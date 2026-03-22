@@ -38,16 +38,18 @@
         <!-- Right: Product Info -->
         <div class="flex flex-col">
             <nav class="flex items-center gap-2 text-[10px] uppercase tracking-widest text-brand-charcoal/40 mb-8">
-                <a [routerLink]="'/' | langLink" class="hover:text-brand-gold transition-colors">Home</a>
+                <a [routerLink]="'/' | langLink" class="hover:text-brand-gold transition-colors">{{ 'nav.home' |
+                    transloco }}</a>
                 <mat-icon class="text-[10px]">chevron_right</mat-icon>
-                <a [routerLink]="'/collection' | langLink"
-                    class="hover:text-brand-gold transition-colors">Collection</a>
+                <a [routerLink]="'/collection' | langLink" class="hover:text-brand-gold transition-colors">{{
+                    'nav.products' | transloco }}</a>
                 <mat-icon class="text-[10px]">chevron_right</mat-icon>
                 <span class="text-brand-charcoal">{{ p.name }}</span>
             </nav>
 
             <h1 class="text-5xl md:text-6xl font-serif mb-4 leading-tight">{{ p.name }}</h1>
-            <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-8">100% Handwoven Pashm</p>
+            <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-8">{{ 'productDetail.pashm' | transloco
+                }}</p>
 
             <div class="flex items-center gap-6 mb-12">
                 <span class="text-2xl font-serif">{{ p.price | number }} {{ p.currency }}</span>
@@ -68,8 +70,8 @@
 
             <!-- Color Swatches -->
             <div class="mb-12">
-                <p class="text-[10px] uppercase tracking-widest font-bold mb-4">Color: <span
-                        class="text-brand-charcoal/60 font-normal">{{ selectedColor() }}</span></p>
+                <p class="text-[10px] uppercase tracking-widest font-bold mb-4">{{ 'productDetail.colorLabel' |
+                    transloco }}: <span class="text-brand-charcoal/60 font-normal">{{ selectedColor() }}</span></p>
                 <div class="flex gap-4">
                     @for (color of p.colors; track color) {
                     <button (click)="selectedColor.set(color)"
@@ -83,29 +85,30 @@
 
             <div class="space-y-4 mb-12">
                 <button (click)="addToCart(p)" class="w-full btn-gold py-4 flex items-center justify-center gap-4">
-                    Add to Bag <mat-icon class="text-sm">arrow_forward</mat-icon>
+                    {{ 'productDetail.addToBag' | transloco }} <mat-icon class="text-sm">arrow_forward</mat-icon>
                 </button>
-                <button class="w-full btn-outline py-4">Inquire for Wholesale</button>
+                <button class="w-full btn-outline py-4">{{ 'productDetail.inquireWholesale' | transloco }}</button>
             </div>
 
             <div class="grid grid-cols-2 gap-8 pt-12 border-t border-brand-charcoal/5">
                 <div class="flex items-center gap-4">
                     <mat-icon class="text-brand-gold text-lg">local_shipping</mat-icon>
-                    <span class="text-[8px] uppercase tracking-widest text-brand-charcoal/60">Complimentary Global
-                        Shipping</span>
+                    <span class="text-[8px] uppercase tracking-widest text-brand-charcoal/60">{{
+                        'productDetail.shipping' | transloco }}</span>
                 </div>
                 <div class="flex items-center gap-4">
                     <mat-icon class="text-brand-gold text-lg">verified_user</mat-icon>
-                    <span class="text-[8px] uppercase tracking-widest text-brand-charcoal/60">Certificate of
-                        Authenticity</span>
+                    <span class="text-[8px] uppercase tracking-widest text-brand-charcoal/60">{{
+                        'productDetail.certificate' | transloco }}</span>
                 </div>
             </div>
         </div>
     </div>
     } @else {
     <div class="text-center py-32">
-        <h2 class="text-3xl font-serif mb-8">Product not found</h2>
-        <button [routerLink]="'/collection' | langLink" class="btn-primary">Back to Collection</button>
+        <h2 class="text-3xl font-serif mb-8">{{ 'productDetail.notFound' | transloco }}</h2>
+        <button [routerLink]="'/collection' | langLink" class="btn-primary">{{ 'productDetail.backToCollection' |
+            transloco }}</button>
     </div>
     }
 </div>
@@ -115,8 +118,9 @@
 <section class="py-16 bg-brand-sand/30 bg-subtle-pattern border-y border-brand-gold/10 w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-3">Distinguishing Features</p>
-            <h2 class="text-4xl md:text-5xl font-serif italic">Heritage Details</h2>
+            <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-3">{{ 'productDetail.heritageEyebrow' |
+                transloco }}</p>
+            <h2 class="text-4xl md:text-5xl font-serif italic">{{ 'productDetail.heritageTitle' | transloco }}</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div class="text-center space-y-4">
@@ -159,8 +163,9 @@
         </div>
         <div class="space-y-12">
             <div>
-                <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">Preservation Artistry</p>
-                <h2 class="text-4xl md:text-5xl font-serif italic mb-8">The Care Ritual</h2>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4">{{ 'productDetail.careEyebrow' |
+                    transloco }}</p>
+                <h2 class="text-4xl md:text-5xl font-serif italic mb-8">{{ 'productDetail.careTitle' | transloco }}</h2>
             </div>
 
             <div class="space-y-8">

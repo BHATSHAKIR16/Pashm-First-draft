@@ -2,9 +2,9 @@
     @if (cart.items().length === 0) {
     <div class="text-center py-20">
         <mat-icon class="text-5xl text-brand-gold/40 mb-4">shopping_bag</mat-icon>
-        <h2 class="text-2xl font-serif mb-4">Your bag is empty</h2>
-        <p class="text-brand-charcoal/60 mb-8">Discover our latest collection and find your perfect piece.</p>
-        <button [routerLink]="'/collection' | langLink" class="btn-primary">Explore Collection</button>
+        <h2 class="text-2xl font-serif mb-4">{{ 'cart.emptyTitle' | transloco }}</h2>
+        <p class="text-brand-charcoal/60 mb-8">{{ 'cart.emptySubtitle' | transloco }}</p>
+        <button [routerLink]="'/collection' | langLink" class="btn-primary">{{ 'home.exploreCta' | transloco }}</button>
     </div>
     } @else {
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
@@ -52,7 +52,7 @@
             <div class="pt-4">
                 <button (click)="cart.clearCart()"
                     class="text-[10px] uppercase tracking-widest text-brand-charcoal/40 hover:text-red-400 transition-colors flex items-center gap-2">
-                    <mat-icon class="text-sm">delete_outline</mat-icon> Clear Bag
+                    <mat-icon class="text-sm">delete_outline</mat-icon> {{ 'cart.clearBag' | transloco }}
                 </button>
             </div>
         </div>
@@ -60,28 +60,28 @@
         <!-- Summary -->
         <div class="lg:col-span-1">
             <div class="bg-brand-sand/30 p-8">
-                <h3 class="text-xl font-serif mb-8">Order Summary</h3>
+                <h3 class="text-xl font-serif mb-8">{{ 'cart.orderSummary' | transloco }}</h3>
 
                 <div class="space-y-4 mb-8">
                     <div class="flex justify-between text-[10px] uppercase tracking-widest text-brand-charcoal/60">
-                        <span>Subtotal</span>
+                        <span>{{ 'cart.subtotal' | transloco }}</span>
                         <span>{{ cart.totalPrice() | number }} AED</span>
                     </div>
                     <div class="flex justify-between text-[10px] uppercase tracking-widest text-brand-charcoal/60">
-                        <span>Shipping</span>
-                        <span class="text-brand-gold">Complimentary</span>
+                        <span>{{ 'cart.shipping' | transloco }}</span>
+                        <span class="text-brand-gold">{{ 'cart.complimentary' | transloco }}</span>
                     </div>
                     <div
                         class="pt-4 border-t border-brand-charcoal/10 flex justify-between text-xs uppercase tracking-[0.2em] font-bold">
-                        <span>Total</span>
+                        <span>{{ 'cart.total' | transloco }}</span>
                         <span>{{ cart.totalPrice() | number }} AED</span>
                     </div>
                 </div>
 
-                <button [routerLink]="'/checkout' | langLink" class="w-full btn-primary mb-4">Proceed to
-                    Checkout</button>
+                <button [routerLink]="'/checkout' | langLink" class="w-full btn-primary mb-4">{{
+                    'cart.proceedToCheckout' | transloco }}</button>
                 <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40 text-center">
-                    Secure payment powered by Al-Masrah
+                    {{ 'cart.securePayment' | transloco }}
                 </p>
             </div>
         </div>

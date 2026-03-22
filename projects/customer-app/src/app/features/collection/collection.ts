@@ -9,11 +9,12 @@ import { ProductCardComponent } from '../../shared/components/product-card';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-collection',
   standalone: true,
-  imports: [CommonModule, MatIconModule, ProductCardComponent],
+  imports: [CommonModule, MatIconModule, ProductCardComponent, TranslocoModule],
   templateUrl: './collection.html',
   styleUrl: './collection.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

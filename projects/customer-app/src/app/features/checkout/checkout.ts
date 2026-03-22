@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TranslocoModule } from '@jsverse/transloco';
 import { CartService } from '../../core/services/cart';
 import { OrderService } from '../../core/services/order';
 import { SeoService } from '../../core/services/seo';
@@ -12,7 +13,7 @@ import { LangLinkPipe } from '../../core/pipes/lang-link.pipe';
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, MatIconModule, LangLinkPipe],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, MatIconModule, LangLinkPipe, TranslocoModule],
   templateUrl: './checkout.html',
   styleUrl: './checkout.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

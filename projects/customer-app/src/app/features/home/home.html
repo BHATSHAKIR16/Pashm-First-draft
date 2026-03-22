@@ -25,12 +25,13 @@
         </div> -->
         <h1
             class="text-5xl md:text-8xl font-serif italic mb-12 leading-tight text-white drop-shadow-sm animate-slide-up delay-400">
-            Timeless Pashmina.<br>
-            Crafted with Heritage.
+            {{ 'home.heroLine1' | transloco }}<br>
+            {{ 'home.heroLine2' | transloco }}
         </h1>
 
         <div class="animate-slide-up animate-delay-600">
-            <button [routerLink]="'/collection' | langLink" class="btn-gold px-12 py-4">Explore Collection</button>
+            <button [routerLink]="'/collection' | langLink" class="btn-gold px-12 py-4">{{ 'home.exploreCta' | transloco
+                }}</button>
         </div>
     </div>
 </section>
@@ -41,13 +42,14 @@
 
         <!-- Section Header -->
         <div class="text-center mb-14">
-            <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-3">The Al-Masrah Promise</p>
+            <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-3">{{ 'home.trustEyebrow' | transloco }}
+            </p>
             <h2 class="text-3xl md:text-4xl font-serif italic text-brand-charcoal mb-4">
-                Every Thread, a Guarantee
+                {{ 'home.trustTitle' | transloco }}
             </h2>
             <div class="w-16 h-px bg-brand-gold/40 mx-auto mb-4"></div>
             <p class="text-xs text-brand-charcoal/55 max-w-sm mx-auto leading-relaxed font-sans">
-                Four pillars that have guided us since 1982 — from the valley to your hands.
+                {{ 'home.trustSubtitle' | transloco }}
             </p>
         </div>
 
@@ -136,9 +138,10 @@
         <!-- Header row with desktop nav arrows -->
         <div class="flex items-end justify-between mb-12">
             <div class="text-center flex-1">
-                <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-4">Our Heritage Gallery</p>
+                <p class="text-[10px] uppercase tracking-[0.4em] text-brand-gold mb-4">{{ 'home.collectionEyebrow' |
+                    transloco }}</p>
                 <div class="w-24 h-px bg-brand-gold/30 mx-auto mb-5"></div>
-                <h2 class="text-4xl md:text-5xl font-serif italic">Curated Masterpieces</h2>
+                <h2 class="text-4xl md:text-5xl font-serif italic">{{ 'home.collectionTitle' | transloco }}</h2>
             </div>
             <!-- Desktop-only arrow controls -->
             <div class="hidden md:flex items-center gap-3 shrink-0 pb-1">
@@ -206,45 +209,46 @@
                 <!-- Eyebrow -->
                 <div class="flex items-center gap-3">
                     <span class="w-8 h-px bg-brand-gold/50"></span>
-                    <p class="text-[10px] uppercase tracking-[0.35em] text-brand-gold">Our Heritage</p>
+                    <p class="text-[10px] uppercase tracking-[0.35em] text-brand-gold">{{ 'home.storyEyebrow' |
+                        transloco }}</p>
                 </div>
 
                 <!-- Heading -->
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif italic leading-tight">
-                    Woven in the Valley,<br>
-                    <span class="text-brand-gold/80">Worn by the World</span>
+                    {{ 'home.storyLine1' | transloco }}<br>
+                    <span class="text-brand-gold/80">{{ 'home.storyLine2' | transloco }}</span>
                 </h2>
 
                 <!-- Body -->
                 <div class="space-y-4 text-brand-charcoal/65 leading-relaxed font-sans text-sm max-w-md">
-                    <p>In the heart of ancient valleys, master artisans breathe life into every thread. Using techniques
-                        preserved across centuries, each pashmina is not merely an accessory — it is an heirloom.</p>
-                    <p>We fuse this timeless tradition with modern aesthetics, crafting pieces that resonate with the
-                        refined tastes of a global clientele.</p>
+                    <p>{{ 'home.storyParagraph1' | transloco }}</p>
+                    <p>{{ 'home.storyParagraph2' | transloco }}</p>
                 </div>
 
                 <!-- Stat row -->
                 <div class="flex items-center gap-8 pt-2 border-t border-brand-charcoal/8">
                     <div>
                         <p class="text-2xl font-sans italic text-brand-gold">40+</p>
-                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">Years of craft</p>
+                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">{{
+                            'home.statYears' | transloco }}</p>
                     </div>
                     <div class="w-px h-8 bg-brand-charcoal/10"></div>
                     <div>
                         <p class="text-2xl font-sans italic text-brand-gold">200+</p>
-                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">Artisan families
-                        </p>
+                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">{{
+                            'home.statArtisans' | transloco }}</p>
                     </div>
                     <div class="w-px h-8 bg-brand-charcoal/10"></div>
                     <div>
                         <p class="text-2xl font-sans italic text-brand-gold">100%</p>
-                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">Pure pashmina</p>
+                        <p class="text-[9px] uppercase tracking-widest text-brand-charcoal/40 mt-0.5">{{
+                            'home.statPurity' | transloco }}</p>
                     </div>
                 </div>
 
                 <a [routerLink]="'/about' | langLink"
                     class="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-brand-gold border-b border-brand-gold/30 pb-0.5 hover:border-brand-gold transition-colors">
-                    Read our story <mat-icon class="text-sm">arrow_forward</mat-icon>
+                    {{ 'home.readOurStory' | transloco }} <mat-icon class="text-sm">arrow_forward</mat-icon>
                 </a>
             </div>
 
@@ -320,12 +324,12 @@
 <!-- Newsletter -->
 <section class="py-32 bg-brand-sand/20 border-t border-brand-gold/10">
     <div class="max-w-3xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-serif italic mb-6">Join Our Circle of Elegance</h2>
-        <p class="text-xs text-brand-charcoal/60 uppercase tracking-widest mb-12">Exclusive access to new arrivals,
-            wholesale opportunities, and private sales.</p>
+        <h2 class="text-4xl font-serif italic mb-6">{{ 'home.newsletterTitle' | transloco }}</h2>
+        <p class="text-xs text-brand-charcoal/60 uppercase tracking-widest mb-12">{{ 'home.newsletterSubtitle' |
+            transloco }}</p>
 
         <form [formGroup]="newsletterForm" (ngSubmit)="onNewsletterSubmit()" class="flex flex-col sm:flex-row gap-4">
-            <input type="email" formControlName="email" placeholder="Enter your email address"
+            <input type="email" formControlName="email" [placeholder]="'home.newsletterPlaceholder' | transloco"
                 class="flex-grow bg-white border border-brand-gold/20 px-6 py-4 outline-none focus:border-brand-gold transition-colors text-sm font-sans" />
             <button type="submit" [disabled]="newsletterForm.invalid || isSubmitting()"
                 class="btn-gold px-12 py-4 disabled:opacity-50">
@@ -333,20 +337,21 @@
                 <span
                     class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin inline-block mr-2"></span>
                 }
-                Subscribe
+                {{ 'home.newsletterButton' | transloco }}
             </button>
         </form>
 
         @if (newsletterForm.get('email')?.touched && newsletterForm.get('email')?.errors?.['email']) {
-        <p class="text-[10px] text-red-500 uppercase tracking-widest mt-4">Please enter a valid email address</p>
+        <p class="text-[10px] text-red-500 uppercase tracking-widest mt-4">{{ 'home.newsletterEmailError' | transloco }}
+        </p>
         }
 
         @if (subscribeSuccess()) {
-        <p class="text-[10px] text-brand-gold uppercase tracking-widest mt-4 animate-fade-in">Thank you for joining our
-            circle.</p>
+        <p class="text-[10px] text-brand-gold uppercase tracking-widest mt-4 animate-fade-in">{{
+            'home.newsletterSuccess' | transloco }}</p>
         }
 
-        <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40 mt-8">By subscribing you agree to our
-            Terms &amp; Privacy Policy.</p>
+        <p class="text-[8px] uppercase tracking-widest text-brand-charcoal/40 mt-8">{{ 'home.newsletterPrivacy' |
+            transloco }}</p>
     </div>
 </section>

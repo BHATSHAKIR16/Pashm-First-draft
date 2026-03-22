@@ -4,44 +4,51 @@
             <div class="md:col-span-1">
                 <span class="text-2xl font-serif font-normal tracking-[0.3em] mb-6 block">AL-MASRAH</span>
                 <p class="text-xs text-brand-charcoal/60 leading-relaxed max-w-xs">
-                    Redefining luxury pashmina for the modern connoisseur. Rooted in heritage, crafted for eternity.
+                    {{ 'footer.tagline' | transloco }}
                 </p>
             </div>
 
             <div>
-                <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold mb-6">Collections</h4>
+                <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold mb-6">{{ 'footer.collections' | transloco }}
+                </h4>
                 <ul class="space-y-4">
                     <li><a href="#"
-                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">New
-                            Arrivals</a></li>
+                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">{{
+                            'footer.newArrivals' | transloco }}</a></li>
                     <li><a href="#"
-                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">Signature</a>
+                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">{{
+                            'footer.signature' | transloco }}</a>
                     </li>
                     <li><a href="#"
-                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">Wholesale</a>
+                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">{{
+                            'footer.wholesale' | transloco }}</a>
                     </li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold mb-6">Heritage</h4>
+                <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold mb-6">{{ 'footer.heritage' | transloco }}
+                </h4>
                 <ul class="space-y-4">
                     <li><a href="#"
-                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">Our
-                            Story</a></li>
+                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">{{
+                            'footer.ourStory' | transloco }}</a></li>
                     <li><a href="#"
-                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">Craftsmanship</a>
+                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">{{
+                            'footer.craftsmanship' | transloco }}</a>
                     </li>
                     <li><a href="#"
-                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">Contact</a>
+                            class="text-[10px] uppercase tracking-widest text-brand-charcoal/60 hover:text-brand-gold transition-colors">{{
+                            'footer.contact' | transloco }}</a>
                     </li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold mb-6">Newsletter</h4>
+                <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold mb-6">{{ 'footer.newsletter' | transloco }}
+                </h4>
                 <div class="relative">
-                    <input type="email" placeholder="EMAIL ADDRESS"
+                    <input type="email" [placeholder]="'footer.emailPlaceholder' | transloco"
                         class="w-full bg-transparent border-b border-brand-charcoal/20 py-2 text-[10px] uppercase tracking-widest focus:outline-none focus:border-brand-gold transition-colors" />
                     <button
                         class="absolute right-0 bottom-2 text-brand-charcoal/60 hover:text-brand-gold transition-colors">
@@ -52,13 +59,15 @@
         </div>
 
         <div class="pt-8 border-t border-brand-charcoal/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-[10px] uppercase tracking-widest text-brand-charcoal/40">© 2024 AL-MASRAH. ALL RIGHTS
-                RESERVED.</p>
+            <p class="text-[10px] uppercase tracking-widest text-brand-charcoal/40">{{ 'footer.copyright' | transloco }}
+            </p>
             <div class="flex gap-8">
                 <a href="#"
-                    class="text-[10px] uppercase tracking-widest text-brand-charcoal/40 hover:text-brand-gold transition-colors">Privacy</a>
+                    class="text-[10px] uppercase tracking-widest text-brand-charcoal/40 hover:text-brand-gold transition-colors">{{
+                    'footer.privacy' | transloco }}</a>
                 <a href="#"
-                    class="text-[10px] uppercase tracking-widest text-brand-charcoal/40 hover:text-brand-gold transition-colors">Terms</a>
+                    class="text-[10px] uppercase tracking-widest text-brand-charcoal/40 hover:text-brand-gold transition-colors">{{
+                    'footer.terms' | transloco }}</a>
             </div>
             <div class="flex gap-4">
                 <mat-icon class="text-sm text-brand-charcoal/40">instagram</mat-icon>

@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { TranslocoModule } from '@jsverse/transloco';
 import { SeoService } from '../../core/services/seo';
 
 interface Pillar {
@@ -20,7 +21,7 @@ interface Stage {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, TranslocoModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.html',
   styleUrl: './about.css',

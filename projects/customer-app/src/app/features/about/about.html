@@ -24,18 +24,19 @@
     <!-- Hero content -->
     <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <span class="about-hero-eyebrow text-white/80 text-[9px] font-bold tracking-[0.5em] uppercase mb-6 block">
-            The Essence of Heritage
+            {{ 'about.heroEyebrow' | transloco }}
         </span>
 
         <h1 class="about-hero-title text-5xl md:text-8xl text-white font-medium mb-8 leading-[1.1] drop-shadow-2xl">
-            Our Legacy of <br /><span class="italic text-brand-gold">Softness</span>
+            {{ 'about.heroTitlePre' | transloco }} <br /><span class="italic text-brand-gold">{{
+                'about.heroTitleHighlight' | transloco }}</span>
         </h1>
 
         <div class="about-hero-divider w-20 h-0.5 bg-brand-gold mx-auto mb-8"></div>
 
         <p
             class="about-hero-tagline text-white/75 text-base md:text-lg font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
-            Since 1982, weaving stories of heritage and elegance under the warmth of the golden desert sun.
+            {{ 'about.heroTagline' | transloco }}
         </p>
     </div>
 
@@ -93,10 +94,10 @@
         <!-- Section heading -->
         <div class="text-center mb-20">
             <span class="text-brand-gold text-[9px] font-bold tracking-[0.5em] uppercase mb-4 block">
-                Why Al-Masrah
+                {{ 'about.whyEyebrow' | transloco }}
             </span>
             <h2 class="text-4xl md:text-5xl text-brand-charcoal font-normal leading-tight mb-6">
-                Built on <span class="italic text-brand-gold">Principles</span> That Never Fade
+                {{ 'about.whyTitle' | transloco }}
             </h2>
             <p class="text-brand-charcoal/60 text-base font-light leading-relaxed max-w-xl mx-auto">
                 Every piece we create is guided by a commitment to the earth, the artisan, and the
@@ -129,10 +130,10 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
 
         <div class="text-center mb-24">
-            <span class="text-brand-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-4 block">The Art of
-                Creation</span>
-            <h2 class="text-4xl md:text-6xl text-brand-charcoal italic font-normal leading-tight">The Four Stages of
-                Softness</h2>
+            <span class="text-brand-gold text-[10px] font-bold tracking-[0.5em] uppercase mb-4 block">{{
+                'about.processEyebrow' | transloco }}</span>
+            <h2 class="text-4xl md:text-6xl text-brand-charcoal italic font-normal leading-tight">{{
+                'about.processTitle' | transloco }}</h2>
             <div class="w-16 h-px bg-brand-gold/30 mx-auto mt-8"></div>
         </div>
 
@@ -202,8 +203,8 @@
         <!-- Section label -->
         <div class="flex items-center gap-4 mb-16">
             <div class="w-8 h-px bg-brand-gold"></div>
-            <span class="text-[9px] uppercase tracking-[0.5em] text-brand-gold font-medium">A Note From the
-                Founder</span>
+            <span class="text-[9px] uppercase tracking-[0.5em] text-brand-gold font-medium">{{ 'about.founderLabel' |
+                transloco }}</span>
         </div>
 
         <!-- Letter card -->
